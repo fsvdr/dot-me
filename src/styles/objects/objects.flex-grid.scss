@@ -1,0 +1,185 @@
+/**
+ * ==============================================
+ * Flex Grid Object
+ * ==============================================
+ *
+ * A flexbox based grid object.
+ *
+ * Defines rules for both horizontal and vertical
+ * grids using BEVM naming convention
+ * (http://bit.ly/2EnL3QP)
+ */
+
+
+
+
+
+// =============================================
+// #OPTIONS
+// =============================================
+
+$flex-grid-prefix: 'o-' !default;
+
+$flex-grid-gutter: 0.5em !default;
+
+$flex-grid-default-justify-content: flex-start !default;
+$flex-grid-default-align-items: flex-start !default;
+$flex-grid-default-align-content: flex-start !default;
+$flex-grid-default-wrap: nowrap !default;
+
+$flex-grid-default-order: 0 !default;
+$flex-grid-default-grow: 0 !default;
+$flex-grid-default-shrink: 1 !default;
+$flex-grid-default-basis: auto !default;
+$flex-grid-default-align-self: auto !default;
+
+
+
+
+
+// =============================================
+// #MIXINS
+// =============================================
+
+@mixin flex-item-properties() {
+  order: $flex-grid-default-order;
+  flex:
+    $flex-grid-default-grow
+    $flex-grid-default-shrink
+    $flex-grid-default-basis;
+  align-self: $flex-grid-default-align-self;
+}
+
+@mixin align-self-modifiers() {
+  &.-self-auto { align-self: auto; }
+  &.-self-start { align-self: flex-start; }
+  &.-self-end { align-self: flex-end; }
+  &.-self-center { align-self: center; }
+  &.-self-stretch { align-self: stretch; }
+  &.-self-baseline { align-self: baseline; }
+}
+
+@mixin flex-container-properties($direction: row) {
+  display: flex;
+  flex-flow: $direction $flex-grid-default-wrap;
+  justify-content: $flex-grid-default-justify-content;
+  align-items: $flex-grid-default-align-items;
+  align-content: $flex-grid-default-align-content;
+}
+
+@mixin wrap-modifiers() {
+  &.-nowrap { flex-wrap: nowrap; }
+  &.-wrap { flex-wrap: wrap; }
+  &.-wrap-rev { flex-wrap: wrap-reverse; }
+}
+
+@mixin justify-content-modifiers() {
+  &.-justify-start { justify-content: flex-start; }
+  &.-justify-end { justify-content: flex-end; }
+  &.-justify-center { justify-content: center; }
+  &.-justify-between { justify-content: space-between; }
+  &.-justify-around { justify-content: space-around; }
+  &.-justify-evenly { justify-content: space-evenly; }
+}
+
+@mixin align-items-modifiers() {
+  &.-items-start { align-items: flex-start; }
+  &.-items-end { align-items: flex-end; }
+  &.-items-center { align-items: center; }
+  &.-items-stretch { align-items: stretch; }
+  &.-items-baseline { align-items: baseline; }
+}
+
+@mixin align-content-modifiers() {
+  &.-content-start { align-content: flex-start; }
+  &.-content-end { align-content: flex-end; }
+  &.-content-center { align-content: center; }
+  &.-content-stretch { align-content: stretch; }
+  &.-content-between { align-content: space-between; }
+  &.-content-around { align-content: space-around; }
+}
+
+@mixin reverse-modifier($direction) {
+  &.-reverse { flex-direction: #{$direction}-reverse; }
+}
+
+@mixin horizontal-grid-inner-gutters() {
+
+  .#{$flex-grid-prefix}flex__item {
+    padding-right: $flex-grid-gutter;
+    &:last-of-type { padding-right: 0; }
+  }
+}
+
+@mixin horizontal-grid-outer-gutters() {
+  padding: $flex-grid-gutter;
+  padding-right: 0;
+
+  .#{$flex-grid-prefix}flex__item { padding-right: $flex-grid-gutter; }
+}
+
+@mixin vertical-grid-inner-gutters() {
+
+  .#{$flex-grid-prefix}flex__item {
+    padding-bottom: $flex-grid-gutter;
+    &:last-of-type { padding-bottom: 0; }
+  }
+}
+
+@mixin vertical-grid-outer-gutters() {
+  padding: $flex-grid-gutter;
+  padding-bottom: 0;
+
+  .#{$flex-grid-prefix}flex__item { padding-bottom: $flex-grid-gutter; }
+}
+
+@mixin gutter-modifiers($direction) {
+  @if $direction == row {
+    // Gutters are horizontal
+    &.-gutters { @include horizontal-grid-inner-gutters(); }
+    &.-gutters-outer { @include horizontal-grid-outer-gutters(); }
+  }
+  @else {
+    // Gutters are vertical
+    &.-gutters { @include vertical-grid-inner-gutters(); }
+    &.-gutters-outer { @include vertical-grid-outer-gutters(); }
+  }
+}
+
+@mixin flex-container-modifiers($direction: row) {
+  @include wrap-modifiers();
+  @include justify-content-modifiers();
+  @include align-items-modifiers();
+  @include align-content-modifiers();
+  @include reverse-modifier($direction);
+  @include gutter-modifiers($direction);
+}
+
+
+
+
+
+// =============================================
+// #RULES
+// =============================================
+
+.#{$flex-grid-prefix}flex {
+  @include flex-container-properties();
+  @include flex-container-modifiers();
+}
+
+.#{$flex-grid-prefix}flex--vertical {
+  @include flex-container-properties(column);
+  @include flex-container-modifiers(column);
+}
+
+.#{$flex-grid-prefix}flex__item {
+  @include flex-item-properties();
+  @include align-self-modifiers();
+}
+
+.#{$flex-grid-prefix}flex__item-fill {
+  @include flex-item-properties();
+  @include align-self-modifiers();
+  flex-grow: 1;
+}

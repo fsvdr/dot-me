@@ -1,0 +1,12 @@
+$breakpoints: (
+  'mob-m': (min-width: 321px),    // Ex. iPhone 7
+  'mob-l': (min-width: 376px),    // Ex. iPhone 7 Plus
+  'tab': (min-width: 601px),      // Ex. iPad
+  'lap': (min-width: 769px),      // Ex. iPad landscape
+  'lap-m': (min-width: 1025px),   // Ex. 13' MacBook
+  'lap-l': (min-width: 1281px),   // Ex. 15' MacBook
+  'desk': (min-width: 1601px),    // Ex. 21.5' iMac
+  'desk-m': (min-width: 1921px),  // Ex. 27' iMac
+  '4k': (min-width: 2561px),      // Ex. 4K iMac
+  '5k': (min-width: 4097px)       // Ex. 5K iMac
+);

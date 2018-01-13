@@ -1,0 +1,11 @@
+$color-intense-blue: #1C47E3;
+$color-yellow: #FECE28;
+$color-brick-red: #EF4A27;
+$color-liquid-dark: rgba(0, 0, 0, 0.73);
+
+$brand-color-palette: (
+  primary: $color-intense-blue,
+  secondary: $color-brick-red,
+  accent: $color-yellow,
+  background: $color-liquid-dark
+);

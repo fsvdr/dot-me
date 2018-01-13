@@ -1,0 +1,14 @@
+// ==============================================
+// Color Tools
+// ==============================================
+
+@function get-color($name) {
+  @if global-variable-exists(brand-color-palette) {
+    @return map-get($brand-color-palette, $name);
+  }
+  @else {
+    @error
+      '$brand-color-palette is not defined. Please be sure to define it\
+      in order for `get-color` to work';
+  }
+}

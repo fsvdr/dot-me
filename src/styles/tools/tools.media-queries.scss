@@ -1,0 +1,47 @@
+// ==============================================
+// Media Queries Tools
+// ==============================================
+
+
+@function get-breakpoint($alias) {
+  @if global-variable-exists(breakpoints) {
+    @if map-has-key($breakpoints, $alias) {
+      @return map-get($breakpoints, $alias);
+    }
+    @else {
+      @error '`$breakpoints` map has key #{$alias}.';
+    }
+  }
+  @else {
+    @error
+      '`$breakpoints` is undefined. Please be sure to define it for\
+      `get-breakpoint` to work.';
+  }
+}
+
+
+@mixin respond-to($breakpoint, $media-type: ('screen')) {
+  // If no breakpoint is given, asume a media query that reacts
+  // only to media type
+  @if $breakpoint == null {
+    @media #{$media-type} {
+      @content;
+    }
+  }
+  // If breakpoint is indeed provided, assume a media query that
+  // reacts to breakpoint and given media type
+  @else {
+    @if global-variable-exists(breakpoints) {
+      @if map-has-key($breakpoints, $breakpoint) {
+        @media #{$media-type} and #{get-breakpoint($breakpoint)} {
+          @content;
+        }
+      }
+    }
+    @else {
+      @error
+        '`$breakpoints` is undefined. Please be sure to define it for\
+        `get-breakpoint` to work.';
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.o-modal {
+  position: fixed;
+  bottom: -100%;
+  left: 50%;
+  width: 90%;
+  transform: translateX(-50%);
+  max-width: 400px;
+  background-color: get-color('background');
+  padding: 1em;
+  animation: showModal 1s ease-out 2s; /* stylelint-disable-line */
+  animation-fill-mode: forwards;
+
+  .o-modal__title { @include modal-title-font-styles(); }
+  .o-modal__body { @include modal-body-font-styles(); }
+}

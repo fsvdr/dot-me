@@ -1,0 +1,45 @@
+.c-website {
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
+  background: url('../assets/images/panopticon.png') 10% 50% no-repeat;
+  background-size: cover;
+  color: #FFFFFF;
+  @include respond-to('tab') {
+    background-position: 50% 50%;
+  }
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url('../assets/images/confetti.svg') 0 50% no-repeat;
+    background-size: cover;
+    z-index: -5;
+    @include respond-to('tab') {
+      background-position: 50% 100%;
+      background-size: contain;
+    }
+  }
+}
+
+.c-website__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.c-website__section {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.o-logo,
+.o-contact-links__toggle {
+  @include link-font-styles();
+}
