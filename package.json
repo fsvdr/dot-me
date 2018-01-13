@@ -1,0 +1,18 @@
+{
+  "name": "dot-me",
+  "version": "0.1.0",
+  "description": "Well hello there 👋. This is the repo for the website https://fsvdr.me which is my personal site and portfolio.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./src/index.html -p 3000",
+    "prod": "parcel build ./src/index.html -d dist --public-url ./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "css-mqpacker": "^6.0.1",
+    "node-sass": "^4.7.2"
+  }
+}

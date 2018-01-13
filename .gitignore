@@ -1,0 +1,11 @@
+// OS Files
+.DS_Store
+
+// ParcelJS cache
+.cache
+
+// Distribution code
+dist
+
+// Node
+node_modules
