@@ -1,1 +1,5 @@
 @import 'settings/_typography.css';
+@import 'settings/_color.css';
+
+@import 'generic/_reset.css';
+@import 'generic/_base.css';
