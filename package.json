@@ -1,9 +1,8 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "dot-me",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "Personal site and portfolio for @fsvdr (a.k.a me)",
+  "version": "1.0.0",
   "dependencies": {
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
@@ -37,12 +36,15 @@
     "stylelint-prettier": "^1.1.2"
   },
   "keywords": [
-    "gatsby"
+    "fsvdr",
+    "web developer",
+    "front end",
+    "portfolio"
   ],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "lint:js": "eslint --ignore-path .gitignore .",
     "lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore",
     "prettier": "prettier \"README.md\" \"gatsby-*.js\" \"src/**/*.{js,jsx,json,md,css}\" --ignore-path .gitignore",
