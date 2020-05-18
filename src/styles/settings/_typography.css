@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: 'Trenda';
-  font-weight: 600;
+  font-weight: 500;
   src: url('../../fonts/trenda/Trenda-Semibold.woff') format('woff'),
     url('../../fonts/trenda/Trenda-Semibold.ttf') format('truetype');
   text-rendering: optimizeLegibility;
@@ -28,4 +28,8 @@
   --font-size-base: 2rem;
   --font-size-md: 2.4rem;
   --font-size-lg: 2.8rem;
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 900;
 }

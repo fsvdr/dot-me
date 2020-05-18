@@ -25,21 +25,24 @@ html {
 
 /*
   1) Occupy all available vertical space
-  2) Emphasize legibility over rendering speed and geometric precision
-  3) Smooth the font on the level of the pixel
-  4) Render text with grayscale antialiasing
+  2) Fix viewport size bump on mobile safari
+  3) Emphasize legibility over rendering speed and geometric precision
+  4) Smooth the font on the level of the pixel
+  5) Render text with grayscale antialiasing
  */
 body {
   width: 100%;
-  height: auto;
   min-height: 100vh; /* [1] */
+  min-height: -webkit-fill-available; /* [2] */
+  height: auto;
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
   line-height: 1.6;
   color: var(--color-black);
-  text-rendering: optimizeLegibility; /* [2] */
-  -webkit-font-smoothing: antialiased; /* [3] */
-  -moz-osx-font-smoothing: grayscale; /* [4] */
+  text-rendering: optimizeLegibility; /* [3] */
+  -webkit-font-smoothing: antialiased; /* [4] */
+  -moz-osx-font-smoothing: grayscale; /* [5] */
   font-smoothing: antialiased; /* stylelint-disable-line */
 }
 
@@ -57,6 +60,7 @@ a {
 }
 
 button {
+  color: inherit;
   border: 0;
   background-color: transparent;
   cursor: pointer;

@@ -1,0 +1,109 @@
+.container {
+  --block-inset: 2.4rem;
+
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  grid-template-rows: 100vh 1fr auto;
+  grid-column-gap: 0.8rem;
+  grid-template-areas: 
+    'header main'
+    'main main'
+    'footer main';
+  inline-size: 100vw;
+  min-block-size: 100vh;
+  block-size: auto;
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+header {
+  position: relative;
+  grid-area: 'header';
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding-block-start: var(--block-inset);
+  padding-inline-start: 0;
+}
+
+header button {
+  position: absolute;
+  top: var(--block-inset);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xs);
+  text-align: center;
+  letter-spacing: 0.4rem;
+  line-height: 1.6rem;
+  text-transform: uppercase;
+  padding-inline-start: 1em;
+}
+
+header .wordmark {
+  font-weight: var(--font-weight-bold);
+  transform: rotate(-90deg);
+}
+
+main {
+  grid-area: 'main';
+}
+
+footer {
+  grid-area: 'footer';
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-block-start: var(--block-inset);
+  padding-block-end: var(--block-inset);
+  transform: rotate(180deg);
+}
+
+footer nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  writing-mode: vertical-lr;
+}
+
+footer nav li {
+  list-style-type: none;
+  font-size: var(--font-size-xs);
+  margin-inline-end: 1.6rem;
+}
+
+footer nav a:hover {
+  text-decoration: underline;
+}
+
+footer span {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  writing-mode: vertical-lr;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    --block-inset: 4rem;
+
+    grid-template-columns: 6rem 1fr 5rem;
+    grid-template-rows: 100vh 1fr;
+    grid-template-areas: 
+      'header main footer'
+      '. main .';
+  }
+
+  header {
+    padding-inline-end: 0;
+  }
+
+  footer {
+    transform: none;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .container {
+    padding-inline: calc((100vw - 180rem) / 2 + 2.4rem);
+  }
+}

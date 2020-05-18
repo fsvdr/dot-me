@@ -1,45 +1,50 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
 
-import Header from './header';
 import './layout.css';
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          ©, Built with
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <div className="container">
+      <header>
+        <button type="button" onClick={() => {}}>
+          me
+          <br />
+          nu
+        </button>
+
+        <span className="wordmark">fsvdr</span>
+      </header>
+
+      <main>{children}</main>
+
+      <footer>
+        <nav>
+          <li>
+            <a href="https://twitter.com/fsvdr" title="Visit me on Twitter">
+              Twitter
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/fsvdr.me" title="Visit me on Instagram">
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/fsvdr" title="Visit me on Dribbble">
+              Dribbble
+            </a>
+          </li>
+          <li>
+            <a href="http://github.com/fsvdr" title="Visit me on Github">
+              Github
+            </a>
+          </li>
+        </nav>
+
+        <span>— Own it</span>
+      </footer>
+    </div>
   );
 };
 
