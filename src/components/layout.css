@@ -12,6 +12,9 @@
   inline-size: 100vw;
   min-block-size: 100vh;
   block-size: auto;
+  padding-inline-start: env(safe-area-inset-left);
+  padding-inline-end: env(safe-area-inset-right);
+  padding-block-end: env(safe-area-inset-bottom);
   color: var(--color-white);
   background-color: var(--color-black);
 }
