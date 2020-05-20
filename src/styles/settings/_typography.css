@@ -23,13 +23,20 @@
 
 :root {
   --font-family-base: 'Trenda', sans-serif;
-  --font-size-xs: 1.4rem;
+  --font-size-xs: 1rem;
   --font-size-sm: 1.8rem;
   --font-size-base: 2rem;
   --font-size-md: 2.4rem;
   --font-size-lg: 2.8rem;
+  --font-size-huuge: 9rem;
 
   --font-weight-regular: 400;
   --font-weight-semibold: 500;
   --font-weight-bold: 900;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --font-size-xs: 1.2rem;
+  }
 }

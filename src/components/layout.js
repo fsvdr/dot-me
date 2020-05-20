@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './layout.css';
 import Helmet from 'react-helmet';
+import styles from './layout.module.css';
 
 const Layout = ({ children }) => {
   return (
@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
         ]}
       />
 
-      <div className="container">
+      <div className={styles.container}>
         <header>
           <button type="button" onClick={() => {}}>
             me
@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
             nu
           </button>
 
-          <span className="wordmark">fsvdr</span>
+          <span className={styles.wordmark}>fsvdr</span>
         </header>
 
         <main>{children}</main>
