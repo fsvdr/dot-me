@@ -1,5 +1,14 @@
+.container {
+  display: grid;
+  grid-template: 
+    'hero' auto
+    'intro' auto
+    / minmax(0, 1fr);
+  row-gap: 12vh;
+}
+
 .huuge {
-  max-inline-size: 130rem;
+  grid-area: hero;
   font-weight: var(--font-weight-bold);
   font-size: min(18vw, 14rem);
   line-height: 100%;
@@ -13,9 +22,21 @@
   -webkit-text-stroke: 1px var(--color-white);
 }
 
-@media screen and (min-width: 768px) {
-  .huuge {
-    padding-inline-start: 5vw;
-    padding-inline-end: 10vw;
+.intro {
+  grid-area: intro;
+}
+
+p {
+  color: var(--color-text-subtle);
+  margin-bottom: 2.4rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    grid-template:
+      '. hero .' auto
+      'intro intro .' auto
+      / 3vw 100rem 3vw;
+    justify-content: space-between;
   }
 }

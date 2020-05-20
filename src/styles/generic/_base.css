@@ -65,3 +65,12 @@ button {
   background-color: transparent;
   cursor: pointer;
 }
+
+b {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+}
+
+ p {
+   max-width: 55ch;
+ }

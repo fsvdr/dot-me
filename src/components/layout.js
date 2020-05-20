@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styles from './layout.module.css';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, className }) => {
   return (
     <>
       <Helmet
@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
           <span className={styles.wordmark}>fsvdr</span>
         </header>
 
-        <main>{children}</main>
+        <main className={className}>{children}</main>
 
         <footer>
           <nav>
@@ -59,6 +59,11 @@ const Layout = ({ children }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
+
+Layout.defaultProps = {
+  className: '',
 };
 
 export default Layout;
