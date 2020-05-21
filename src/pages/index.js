@@ -15,12 +15,13 @@ const IndexPage = () => (
 
     <div className={styles.intro}>
       <p className={styles.intro}>
-        I build clean and modern <b>user interfaces</b> with performance and accessibility in mind.
+        I build clean and modern <b>user interfaces</b> with performance and accessibility in mind. Which is a nerdy way
+        of saying I do websites, apps and everything of the sorts.
       </p>
 
       <p className={styles.intro}>
         Currently I&apos;m a lead front end developer at Blac-Sheep where I work closely with our clients to bring new
-        features to their web and mobile apps.
+        features to their apps.
       </p>
     </div>
   </Layout>
