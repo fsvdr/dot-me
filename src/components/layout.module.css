@@ -62,6 +62,7 @@ footer {
   padding-block-start: var(--block-inset);
   padding-block-end: var(--block-inset);
   transform: rotate(180deg);
+  will-change: scroll-position;
 }
 
 footer nav {

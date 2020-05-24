@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import Helmet from 'react-helmet';
+import { motion } from 'framer-motion';
+
 import styles from './layout.module.css';
+import useParallax, { PARALLAX_DEPTH } from '../hooks/useParallax';
 
 const Layout = ({ children, className }) => {
+  const { containerRef, y } = useParallax(PARALLAX_DEPTH.DEEP);
+
   return (
     <>
       <Helmet
@@ -13,8 +17,8 @@ const Layout = ({ children, className }) => {
         ]}
       />
 
-      <div className={styles.container}>
-        <header>
+      <div className={styles.container} ref={containerRef}>
+        <motion.header style={{ y }}>
           <button type="button" onClick={() => {}}>
             me
             <br />
@@ -22,11 +26,11 @@ const Layout = ({ children, className }) => {
           </button>
 
           <span className={styles.wordmark}>fsvdr</span>
-        </header>
+        </motion.header>
 
         <main className={className}>{children}</main>
 
-        <footer>
+        <motion.footer>
           <nav>
             <li>
               <a href="https://twitter.com/fsvdr" title="Visit me on Twitter">
@@ -51,7 +55,7 @@ const Layout = ({ children, className }) => {
           </nav>
 
           <span>— Own it</span>
-        </footer>
+        </motion.footer>
       </div>
     </>
   );
