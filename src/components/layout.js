@@ -7,7 +7,7 @@ import styles from './layout.module.css';
 import useParallax, { PARALLAX_DEPTH } from '../hooks/useParallax';
 
 const Layout = ({ children, className }) => {
-  const { containerRef, y } = useParallax(PARALLAX_DEPTH.DEEP);
+  const { containerRef, y } = useParallax(PARALLAX_DEPTH.FRONT);
 
   return (
     <>
@@ -30,7 +30,7 @@ const Layout = ({ children, className }) => {
 
         <main className={className}>{children}</main>
 
-        <motion.footer>
+        <motion.footer style={{ y }}>
           <nav>
             <li>
               <a href="https://twitter.com/fsvdr" title="Visit me on Twitter">

@@ -6,7 +6,7 @@ import { useViewportScroll, useTransform } from 'framer-motion';
  */
 export const PARALLAX_DEPTH = {
   DEEP: 0.8,
-  BACKGROUND: 0.4,
+  BACKGROUND: 0.25,
   BASE: 0,
   FRONT: -0.5,
   FOREGROUND: -1,

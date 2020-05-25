@@ -5,6 +5,7 @@
     'intro' auto
     / minmax(0, 1fr);
   row-gap: 12vh;
+  padding-block-end: 50vh;
 }
 
 .huuge {
