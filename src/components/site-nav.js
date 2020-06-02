@@ -36,6 +36,8 @@ const SiteNav = ({ reveal }) => {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line no-undef
+    document.body.style.position = reveal ? 'fixed' : '';
     animation.start(reveal ? 'visible' : 'hidden');
   }, [reveal]);
 
