@@ -7,7 +7,7 @@
   grid-column-gap: 0.8rem;
   grid-template-areas: 
     'header header header'
-    'footer main .'
+    '. main footer'
     '. main .';
   inline-size: 100vw;
   min-block-size: 100vh;
@@ -16,6 +16,12 @@
   padding-block-end: env(safe-area-inset-bottom);
   color: var(--color-white);
   background-color: var(--color-black);
+}
+
+.container--light-theme header,
+.container--light-theme footer {
+  transition: color 0.3s;
+  color: var(--color-black);
 }
 
 header {
@@ -27,9 +33,10 @@ header {
   align-items: center;
   padding-inline-start: 0.4rem;
   padding-inline-end: 0.8rem;
+  z-index: var(--depth-frame);
 }
 
-header button {
+header button {  
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-xs);
   text-align: center;
@@ -61,7 +68,7 @@ footer {
   align-items: center;
   padding-block-start: var(--block-inset);
   padding-block-end: var(--block-inset);
-  transform: rotate(180deg);
+  z-index: var(--depth-frame);
   will-change: scroll-position;
 }
 
@@ -114,7 +121,14 @@ footer span {
     top: var(--block-inset);
     left: 50%;
     transform: translateX(-50%);
+    transform-origin: center;
+    transition: all 0.3s;
   }
+
+  header button:hover {
+  transform: translateX(-50%) scale(0.8);
+  transition: all 0.3s;
+}
 
   header .wordmark {
     font-size: var(--font-size-sm);
@@ -128,7 +142,6 @@ footer span {
   footer {
     align-self: stretch;
     justify-content: space-between;
-    transform: none;
   }
 }
 

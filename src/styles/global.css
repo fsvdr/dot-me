@@ -1,5 +1,6 @@
 @import 'settings/_typography.css';
 @import 'settings/_color.css';
+@import 'settings/_depth.css';
 
 @import 'generic/_reset.css';
 @import 'generic/_base.css';
