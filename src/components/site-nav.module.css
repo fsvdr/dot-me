@@ -21,6 +21,7 @@ figure {
   inline-size: max(40vmin, 28rem);
   block-size: 50vmin;
   background-color: var(--color-background);
+  margin-block-end: 10vh;
 }
 
 @keyframes reveal-image {
@@ -41,13 +42,13 @@ figure figcaption {
   align-self: flex-end;
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
-  margin-block-end: -3.2rem;
 }
 
 ul {
   position: relative;
   list-style-type: none;
   margin-inline-start: -1.6rem;
+  padding-block-end: 10vh;
   z-index: var(--depth-menu-list);
 }
 
