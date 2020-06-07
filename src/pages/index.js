@@ -21,13 +21,13 @@ const IndexPage = () => {
 
       <motion.div style={{ y }} className={styles.intro} ref={containerRef}>
         <p className={styles.intro}>
-          I build clean and modern <b>user interfaces</b> with performance and accessibility in mind. Which is a nerdy
-          way of saying I do websites, apps and everything of the sorts.
+          I build clean and modern <b>user interfaces</b>. Which is a nerdy way of saying I do websites, apps and
+          everything of the sorts. Currently I&apos;m digging into accessibility and performance.
         </p>
 
         <p className={styles.intro}>
-          Currently I&apos;m a lead front end developer at Blac-Sheep where I work closely with our clients to bring new
-          features to their apps.
+          I work as a lead front end developer at Blac-Sheep where I work closely with our clients to bring new features
+          to their apps.
         </p>
       </motion.div>
     </Layout>
