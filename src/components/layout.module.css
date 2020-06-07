@@ -86,7 +86,8 @@ footer nav li {
   margin-inline-end: 1.6rem;
 }
 
-footer nav a:hover {
+footer nav a:hover,
+footer nav a:focus {
   text-decoration: underline;
 }
 
@@ -125,7 +126,8 @@ footer span {
     transition: all 0.3s;
   }
 
-  header button:hover {
+  header button:hover,
+  header button:focus {
   transform: translateX(-50%) scale(0.8);
   transition: all 0.3s;
 }

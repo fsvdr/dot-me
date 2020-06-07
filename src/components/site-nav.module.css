@@ -1,17 +1,22 @@
-.menu-container {
+.modal {
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
   inline-size: 100%;
   block-size: 100%;
   color: var(--color-black);
   background-color: var(--color-white);
   z-index: var(--depth-menu);
   will-change: contents;
+}
+
+.menu-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 figure {
@@ -58,6 +63,10 @@ ul li {
   margin-block-end: 1.6rem;
   margin-block-end: 2.4rem;
   margin-block-start: -1.6rem;
+}
+
+ul li a {
+  display: block;
   transition: all 0.3s;
 }
 
@@ -69,7 +78,8 @@ ul li:last-of-type {
   margin-block-end: 0;
 }
 
-ul li:hover {
+ul li a:hover,
+ul li a:focus {
   transform: translateX(1.6rem)
 }
 

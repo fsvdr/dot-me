@@ -34,7 +34,11 @@ const Layout = ({ children, className }) => {
 
       <div className={styles.container} ref={containerRef}>
         <motion.header style={{ y }} initial="dark" animate={layoutAnimation} variants={variants}>
-          <button type="button" onClick={() => toggleMenu()}>
+          <button
+            type="button"
+            onClick={() => toggleMenu()}
+            aria-label={`${revealMenu ? 'Close' : 'Open'} Site Navigation`}
+          >
             {!revealMenu && (
               <span>
                 me

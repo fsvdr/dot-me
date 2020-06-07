@@ -42,36 +42,45 @@ const SiteNav = ({ reveal }) => {
   }, [reveal]);
 
   return ReactDOM.createPortal(
-    <motion.nav className={styles.menuContainer} initial="hidden" animate={animation} variants={variants.menu}>
-      <motion.figure variants={variants.figure}>
-        {animateSelfie && <Selfie />}
-        <figcaption>— Hey look, it&apos;s me!</figcaption>
-      </motion.figure>
+    <motion.div
+      className={styles.modal}
+      initial="hidden"
+      animate={animation}
+      variants={variants.menu}
+      role="dialog"
+      aria-label="Site Navigation"
+    >
+      <nav className={styles.menuContainer}>
+        <motion.figure variants={variants.figure}>
+          {animateSelfie && <Selfie />}
+          <figcaption>— Hey look, it&apos;s me!</figcaption>
+        </motion.figure>
 
-      <motion.ul variants={variants.links}>
-        <li
-          className={navHoverIndex && navHoverIndex !== 1 && styles.ignored}
-          onMouseEnter={() => setNavHoverIndex(1)}
-          onMouseLeave={() => setNavHoverIndex(null)}
-        >
-          <Link to="/about">About.</Link>
-        </li>
-        <li
-          className={navHoverIndex && navHoverIndex !== 2 && styles.ignored}
-          onMouseEnter={() => setNavHoverIndex(2)}
-          onMouseLeave={() => setNavHoverIndex(null)}
-        >
-          <Link to="/blog">Blog.</Link>
-        </li>
-        <li
-          className={navHoverIndex && navHoverIndex !== 3 && styles.ignored}
-          onMouseEnter={() => setNavHoverIndex(3)}
-          onMouseLeave={() => setNavHoverIndex(null)}
-        >
-          <Link to="/contact">Contact.</Link>
-        </li>
-      </motion.ul>
-    </motion.nav>,
+        <motion.ul variants={variants.links}>
+          <li
+            className={navHoverIndex && navHoverIndex !== 1 && styles.ignored}
+            onMouseEnter={() => setNavHoverIndex(1)}
+            onMouseLeave={() => setNavHoverIndex(null)}
+          >
+            <Link to="/about">About.</Link>
+          </li>
+          <li
+            className={navHoverIndex && navHoverIndex !== 2 && styles.ignored}
+            onMouseEnter={() => setNavHoverIndex(2)}
+            onMouseLeave={() => setNavHoverIndex(null)}
+          >
+            <Link to="/blog">Blog.</Link>
+          </li>
+          <li
+            className={navHoverIndex && navHoverIndex !== 3 && styles.ignored}
+            onMouseEnter={() => setNavHoverIndex(3)}
+            onMouseLeave={() => setNavHoverIndex(null)}
+          >
+            <Link to="/contact">Contact.</Link>
+          </li>
+        </motion.ul>
+      </nav>
+    </motion.div>,
     // eslint-disable-next-line no-undef
     document.body
   );
