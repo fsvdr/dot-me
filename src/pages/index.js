@@ -8,21 +8,21 @@ import styles from './index.module.css';
 import useParallax, { PARALLAX_DEPTH } from '../hooks/useParallax';
 
 const IndexPage = () => {
-  const { containerRef, y } = useParallax(PARALLAX_DEPTH.BACKGROUND);
+  const { containerRef, y } = useParallax(PARALLAX_DEPTH.FRONT);
 
   return (
     <Layout className={styles.container}>
       <SEO title="fsvdr" />
 
-      <h1 className={styles.huuge}>
+      <motion.h1 style={{ y }} className={styles.huuge}>
         Oh hi, my name is Fernando. I’m a <span className={styles.ghosty}>front end developer</span> based in Mexico
         City.
-      </h1>
+      </motion.h1>
 
-      <motion.div style={{ y }} className={styles.intro} ref={containerRef}>
+      <motion.div className={styles.intro} ref={containerRef}>
         <p className={styles.intro}>
-          I build clean and modern <b>user interfaces</b>. Which is a nerdy way of saying I do websites, apps and
-          everything of the sorts. Currently I&apos;m digging into accessibility and performance.
+          I build clean and modern <b>user interfaces</b> <i>a.k.a.</i> websites and apps. Currently I&apos;m digging
+          into accessibility and performance.
         </p>
 
         <p className={styles.intro}>

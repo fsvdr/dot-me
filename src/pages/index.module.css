@@ -6,6 +6,8 @@
     / minmax(0, 1fr);
   row-gap: 12vh;
   padding-block-end: 50vh;
+  color: var(--color-white);
+  padding-block-start: 10vh;
 }
 
 .huuge {
