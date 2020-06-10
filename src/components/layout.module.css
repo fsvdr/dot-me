@@ -14,8 +14,6 @@
   padding-inline-start: env(safe-area-inset-left);
   padding-inline-end: env(safe-area-inset-right);
   padding-block-end: env(safe-area-inset-bottom);
-  color: var(--color-white);
-  background-color: var(--color-black);
 }
 
 .container--light-theme header,
@@ -33,7 +31,6 @@ header {
   align-items: center;
   padding-inline-start: 0.4rem;
   padding-inline-end: 0.8rem;
-  z-index: var(--depth-frame);
 }
 
 header button {  
@@ -53,7 +50,7 @@ header .wordmark {
   margin-inline-start: -0.8rem;
 }
 
-main {
+.main {
   grid-area: main;
   padding-block-start: 2rem;
   padding-inline-end: 1.6rem;
@@ -68,7 +65,6 @@ footer {
   align-items: center;
   padding-block-start: var(--block-inset);
   padding-block-end: var(--block-inset);
-  z-index: var(--depth-frame);
   will-change: scroll-position;
 }
 

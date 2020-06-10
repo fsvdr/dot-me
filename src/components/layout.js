@@ -1,12 +1,12 @@
-import React, { useState, useCallback } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 
+import { Link } from 'gatsby';
 import styles from './layout.module.css';
 import useParallax, { PARALLAX_DEPTH } from '../hooks/useParallax';
-import SiteNav from './site-nav';
-import useLifecycleTransition from '../hooks/useLifecycleTransition';
+import { MenuContext } from '../context/menu';
 
 const variants = {
   dark: { color: '#ffffff', transition: { duration: 0.6 } },
@@ -14,15 +14,8 @@ const variants = {
 };
 
 const Layout = ({ children, className }) => {
-  const { containerRef, y } = useParallax(PARALLAX_DEPTH.FRONT);
-  const [revealMenu, setRevealMenu] = useState(false);
-  const layoutAnimation = useAnimation();
-  const mountMenu = useLifecycleTransition(revealMenu, 1000);
-
-  const toggleMenu = useCallback(() => {
-    setRevealMenu(!revealMenu);
-    layoutAnimation.start(revealMenu ? 'dark' : 'light');
-  }, [revealMenu]);
+  const [, transition, open, close] = useContext(MenuContext);
+  const { containerRef } = useParallax(PARALLAX_DEPTH.FRONT);
 
   return (
     <>
@@ -33,20 +26,20 @@ const Layout = ({ children, className }) => {
       />
 
       <div className={styles.container} ref={containerRef}>
-        <motion.header style={{ y }} initial="dark" animate={layoutAnimation} variants={variants}>
+        <motion.header initial="dark" animate={transition ? 'light' : 'dark'} variants={variants}>
           <button
             type="button"
-            onClick={() => toggleMenu()}
-            aria-label={`${revealMenu ? 'Close' : 'Open'} Site Navigation`}
+            onClick={() => (transition ? close() : open())}
+            aria-label={`${transition ? 'Close' : 'Open'} Site Navigation`}
           >
-            {!revealMenu && (
+            {!transition && (
               <span>
                 me
                 <br />
                 nu
               </span>
             )}
-            {revealMenu && (
+            {transition && (
               <span>
                 cl
                 <br />
@@ -55,30 +48,32 @@ const Layout = ({ children, className }) => {
             )}
           </button>
 
-          <span className={styles.wordmark}>fsvdr</span>
+          <Link className={styles.wordmark} to="/">
+            fsvdr
+          </Link>
         </motion.header>
 
-        <main className={className}>{children}</main>
+        <div className={`${styles.main} ${className}`}>{children}</div>
 
-        <motion.footer style={{ y }} initial="dark" animate={layoutAnimation} variants={variants}>
+        <motion.footer initial="dark" animate={transition ? 'light' : 'dark'} variants={variants}>
           <nav>
-            <li animate={{ marginTop: 0 }}>
+            <li>
               <a href="https://twitter.com/fsvdr" title="Visit me on Twitter">
                 Twitter
               </a>
             </li>
-            <li animate={{ marginTop: 0 }}>
+            <li>
               <a href="https://instagram.com/fsvdr.me" title="Visit me on Instagram">
                 Instagram
               </a>
             </li>
-            <li animate={{ marginTop: 0 }}>
+            <li>
               <a href="https://instagram.com/fsvdr" title="Visit me on Dribbble">
                 Dribbble
               </a>
             </li>
             <li>
-              <a href="http://github.com/fsvdr" title="Visit me on Github">
+              <a href="https://github.com/fsvdr" title="Visit me on Github">
                 Github
               </a>
             </li>
@@ -86,8 +81,6 @@ const Layout = ({ children, className }) => {
 
           <span>— Own it</span>
         </motion.footer>
-
-        {mountMenu && <SiteNav reveal={revealMenu} />}
       </div>
     </>
   );
