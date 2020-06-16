@@ -4,32 +4,33 @@ import { motion } from 'framer-motion';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-import styles from './index.module.css';
+import { Container, BigText, GhostText } from './index.styles';
 import useParallax, { PARALLAX_DEPTH } from '../hooks/useParallax';
 
 const IndexPage = () => {
   const { containerRef, y } = useParallax(PARALLAX_DEPTH.FRONT);
 
   return (
-    <Layout className={styles.container}>
+    <Layout>
       <SEO title="fsvdr" />
 
-      <motion.h1 style={{ y }} className={styles.huuge}>
-        Oh hi, my name is Fernando. I’m a <span className={styles.ghosty}>front end developer</span> based in Mexico
-        City.
-      </motion.h1>
+      <Container>
+        <BigText as={motion.h1} style={{ y }}>
+          Oh hi, my name is Fernando. I’m a <GhostText>front end developer</GhostText> based in Mexico City.
+        </BigText>
 
-      <motion.div className={styles.intro} ref={containerRef}>
-        <p className={styles.intro}>
-          I build clean and modern <b>user interfaces</b> <i>a.k.a.</i> websites and apps. Currently I&apos;m digging
-          into accessibility and performance.
-        </p>
+        <motion.div className="intro" ref={containerRef}>
+          <p>
+            I build clean and modern <b>user interfaces</b> <i>a.k.a.</i> websites and apps. Currently I&apos;m digging
+            into accessibility and performance.
+          </p>
 
-        <p className={styles.intro}>
-          I work as a lead front end developer at Blac-Sheep where I work closely with our clients to bring new features
-          to their apps.
-        </p>
-      </motion.div>
+          <p>
+            I work as a lead front end developer at Blac-Sheep where I work closely with our clients to bring new
+            features to their apps.
+          </p>
+        </motion.div>
+      </Container>
     </Layout>
   );
 };

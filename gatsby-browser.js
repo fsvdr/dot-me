@@ -1,18 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './src/styles/global.css';
+import { ThemeProvider } from 'styled-components';
 
+import './src/typeface-trenda.css';
+import { theme, GlobalStyles } from './src/App.styles';
 import MenuProvider from './src/context/menu';
 import SiteNav from './src/components/site-nav';
 
 // eslint-disable-next-line import/prefer-default-export
 export const wrapRootElement = ({ element }) => {
   return (
-    <MenuProvider>
-      {element}
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
 
-      <SiteNav />
-    </MenuProvider>
+      <MenuProvider>
+        {element}
+
+        <SiteNav />
+      </MenuProvider>
+    </ThemeProvider>
   );
 };
 

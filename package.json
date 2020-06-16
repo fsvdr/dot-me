@@ -4,6 +4,7 @@
   "description": "Personal site and portfolio for @fsvdr (a.k.a me)",
   "version": "1.0.0",
   "dependencies": {
+    "babel-plugin-styled-components": "^1.10.7",
     "framer-motion": "^1.11.0",
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
@@ -11,12 +12,14 @@
     "gatsby-plugin-offline": "^3.0.32",
     "gatsby-plugin-react-helmet": "^3.1.21",
     "gatsby-plugin-sharp": "^2.4.3",
+    "gatsby-plugin-styled-components": "^3.3.4",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-sharp": "^2.3.13",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

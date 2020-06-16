@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'Trenda';
+  src: url('./fonts/trenda/Trenda-Regular.woff') format('woff'),
+    url('./fonts/trenda/Trenda-Regular.ttf') format('truetype');
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'Trenda';
+  font-weight: 500;
+  src: url('./fonts/trenda/Trenda-Semibold.woff') format('woff'),
+    url('./fonts/trenda/Trenda-Semibold.ttf') format('truetype');
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'Trenda';
+  font-weight: 900;
+  src: url('./fonts/trenda/Trenda-Heavy.woff') format('woff'),
+    url('./fonts/trenda/Trenda-Heavy.ttf') format('truetype');
+  text-rendering: optimizeLegibility;
+}

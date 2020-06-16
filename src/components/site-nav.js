@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
+import styled, { keyframes } from 'styled-components';
 
 import Selfie from './selfie';
-import styles from './site-nav.module.css';
 import { MenuContext } from '../context/menu';
 import Layout from './layout';
 
@@ -27,6 +27,95 @@ const variants = {
   },
 };
 
+const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  color: ${props => props.theme.color.black};
+  background-color: ${props => props.theme.color.white};
+  will-change: contents;
+`;
+
+const Container = styled.nav`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+const ImageReveal = keyframes`
+  from { clip-path: polygon(0% 100%, 0% 100%, 100% 100%, 100% 100%); }
+  to { clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%); }
+`;
+
+const Figure = styled.figure`
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  inline-size: max(40vmin, 28rem);
+  block-size: 50vmin;
+  background-color: ${props => props.theme.color.gray};
+  margin-block-end: 10vh;
+
+  & > div {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0% 100%, 0% 100%, 100% 100%, 100% 100%);
+    animation: ${ImageReveal} 0.6s 0.4s ease-out forwards;
+  }
+
+  & figcaption {
+    position: absolute;
+    top: calc(100% + 0.8rem);
+    align-self: flex-end;
+    font-size: ${props => props.theme.fontSize.xs};
+    font-weight: ${props => props.theme.fontWeight.bold};
+  }
+`;
+
+const NavLinks = styled.ul`
+  position: relative;
+  list-style-type: none;
+  margin-inline-start: -1.6rem;
+  padding-block-end: 10vh;
+
+  & li {
+    font-size: ${props => props.theme.fontSize.xl};
+    font-weight: ${props => props.theme.fontWeight.bold};
+    margin-block-end: 1.6rem;
+    margin-block-end: 2.4rem;
+    margin-block-start: -1.6rem;
+
+    &:last-of-type {
+      margin-block-end: 0;
+    }
+  }
+
+  & li a {
+    display: block;
+    transition: all 0.3s;
+
+    &.is-ignored {
+      color: ${props => props.theme.color.gray};
+    }
+
+    &:hover,
+    &:focus {
+      transform: translateX(1.6rem);
+    }
+  }
+`;
+
 const SiteNav = () => {
   const [mount, transition, , close] = useContext(MenuContext);
   const [navHoverIndex, setNavHoverIndex] = useState(null);
@@ -44,8 +133,8 @@ const SiteNav = () => {
   if (!mount) return null;
 
   return ReactDOM.createPortal(
-    <motion.div
-      className={styles.modal}
+    <Modal
+      as={motion.div}
       initial="hidden"
       animate={transition ? 'visible' : 'hidden'}
       variants={variants.menu}
@@ -53,15 +142,15 @@ const SiteNav = () => {
       aria-label="Site Navigation"
     >
       <Layout>
-        <nav className={styles.menuContainer}>
-          <motion.figure variants={variants.figure}>
+        <Container>
+          <Figure as={motion.figure} variants={variants.figure}>
             {animateSelfie && <Selfie />}
             <figcaption>— Hey look, it&apos;s me!</figcaption>
-          </motion.figure>
+          </Figure>
 
-          <motion.ul variants={variants.links}>
+          <NavLinks as={motion.ul} variants={variants.links}>
             <li
-              className={navHoverIndex && navHoverIndex !== 1 ? styles.ignored : ''}
+              className={navHoverIndex && navHoverIndex !== 1 ? 'is-ignored' : ''}
               onMouseEnter={() => setNavHoverIndex(1)}
               onMouseLeave={() => setNavHoverIndex(null)}
             >
@@ -70,7 +159,7 @@ const SiteNav = () => {
               </Link>
             </li>
             <li
-              className={navHoverIndex && navHoverIndex !== 2 ? styles.ignored : ''}
+              className={navHoverIndex && navHoverIndex !== 2 ? 'is-ignored' : ''}
               onMouseEnter={() => setNavHoverIndex(2)}
               onMouseLeave={() => setNavHoverIndex(null)}
             >
@@ -79,7 +168,7 @@ const SiteNav = () => {
               </Link>
             </li>
             <li
-              className={navHoverIndex && navHoverIndex !== 3 ? styles.ignored : ''}
+              className={navHoverIndex && navHoverIndex !== 3 ? 'is-ignored' : ''}
               onMouseEnter={() => setNavHoverIndex(3)}
               onMouseLeave={() => setNavHoverIndex(null)}
             >
@@ -87,10 +176,10 @@ const SiteNav = () => {
                 Contact.
               </Link>
             </li>
-          </motion.ul>
-        </nav>
+          </NavLinks>
+        </Container>
       </Layout>
-    </motion.div>,
+    </Modal>,
     // eslint-disable-next-line no-undef
     document.body
   );
