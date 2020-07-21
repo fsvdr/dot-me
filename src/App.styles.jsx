@@ -3,13 +3,13 @@ import { createGlobalStyle } from 'styled-components';
 const colors = {
   black: '#000000',
   white: '#ffffff',
-  gray: '#dddddd',
+  red: '#FF4A4A',
 };
 
 const functionalColors = {
-  text: colors.black,
-  textSubtle: '#959595',
-  background: '#dddddd',
+  accent: colors.red,
+  text: colors.white,
+  textSubtle: '#999999',
 };
 
 const typography = {
@@ -18,24 +18,22 @@ const typography = {
     base: 'Trenda',
   },
   fontSize: {
-    xs: '1.2rem',
-    sm: '1.6rem',
-    base: '2rem',
-    md: '2.4rem',
-    lg: '2.8rem',
-    xl: '6rem',
-    big: '14rem',
+    sm: '0.75em',
+    base: '1em',
+    md: '1.333em',
+    lg: '2.369em',
+    big: '7.478em',
   },
   fontWeight: {
     regular: 400,
-    semibold: 500,
-    bold: 900,
+    black: 800,
   },
 };
 
 const breakpoints = {
   portraitTablet: '768px',
   mediumViewport: '1024px',
+  widthConstraint: '1600px',
 };
 
 const depth = {
@@ -183,7 +181,7 @@ export const GlobalStyles = createGlobalStyle`
     min-height: 100vh; /* [2] */
     overflow-x: hidden; /* [3] */
     font-family: sans-serif;
-    font-size: 62.5%;
+    font-size: 100%;
     scroll-behavior: smooth;
     text-size-adjust: 100%; /* [4] */
   }
@@ -208,7 +206,7 @@ export const GlobalStyles = createGlobalStyle`
     min-height: -webkit-fill-available; /* [2] */
     height: auto;
     font-family: ${theme.fontFamily.base};
-    font-size: ${theme.fontSize.base};
+    font-size: 1.125em;
     font-weight: ${theme.fontWeight.regular};
     line-height: 1.6;
     color: ${theme.color.text};
@@ -245,7 +243,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   p {
-    color: ${theme.color.textSubtle};
     max-width: 55ch;
     margin-block-end: 2.4rem;
   }

@@ -1,22 +1,35 @@
 @font-face {
   font-family: 'Trenda';
-  src: url('./fonts/trenda/Trenda-Regular.woff') format('woff'),
-    url('./fonts/trenda/Trenda-Regular.ttf') format('truetype');
+  src: url('./fonts/Trenda/Trenda/Trenda-Regular.eot'); /* IE9 Compat Modes */
+  src: url('./fonts/Trenda/Trenda/Trenda-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('./fonts/Trenda/Trenda/Trenda-Regular.woff') format('woff'), /* Modern Browsers */
+        url('./fonts/Trenda/Trenda/Trenda-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('./fonts/Trenda/Trenda/Trenda-Regular.svg#Trenda-Regular') format('svg'); /* Legacy iOS */
+  font-style: normal;
+  font-weight: normal;
   text-rendering: optimizeLegibility;
 }
 
 @font-face {
   font-family: 'Trenda';
-  font-weight: 500;
-  src: url('./fonts/trenda/Trenda-Semibold.woff') format('woff'),
-    url('./fonts/trenda/Trenda-Semibold.ttf') format('truetype');
+  src: url('./fonts/Trenda/Trenda\ Black/Trenda-Black.eot'); /* IE9 Compat Modes */
+  src: url('./fonts/Trenda/Trenda\ Black/Trenda-Black.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('./fonts/Trenda/Trenda\ Black/Trenda-Black.woff') format('woff'), /* Modern Browsers */
+        url('./fonts/Trenda/Trenda\ Black/Trenda-Black.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('./fonts/Trenda/Trenda\ Black/Trenda-Black.svg#Trenda-Black') format('svg'); /* Legacy iOS */
+  font-style: normal;
+  font-weight: 800;
   text-rendering: optimizeLegibility;
 }
 
 @font-face {
   font-family: 'Trenda';
-  font-weight: 900;
-  src: url('./fonts/trenda/Trenda-Heavy.woff') format('woff'),
-    url('./fonts/trenda/Trenda-Heavy.ttf') format('truetype');
+  src: url('./fonts/Trenda/Trenda\ Black\ It/Trenda-BlackIt.eot'); /* IE9 Compat Modes */
+  src: url('./fonts/Trenda/Trenda\ Black\ It/Trenda-BlackIt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('./fonts/Trenda/Trenda\ Black\ It/Trenda-BlackIt.woff') format('woff'), /* Modern Browsers */
+        url('./fonts/Trenda/Trenda\ Black\ It/Trenda-BlackIt.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('./fonts/Trenda/Trenda\ Black\ It/Trenda-BlackIt.svg#Trenda-BlackIt') format('svg'); /* Legacy iOS */
+  font-style: italic;
+  font-weight: 800;
   text-rendering: optimizeLegibility;
 }

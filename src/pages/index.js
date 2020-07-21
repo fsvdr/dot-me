@@ -1,38 +1,67 @@
 import React from 'react';
 
+import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-import { Container, BigText, GhostText } from './index.styles';
+import { Hero, HeroImage, Section, Lead, Availability } from './index.styles';
+import GhostText from '../components/ghost-text';
+import Title from '../components/title';
+import Image from '../components/image';
+import Layout from '../components/layout';
 import useParallax, { PARALLAX_DEPTH } from '../hooks/useParallax';
+import useViewportSize from '../hooks/useViewportSize';
 
-const IndexPage = () => {
-  const { containerRef, y } = useParallax(PARALLAX_DEPTH.FRONT);
+const IndexPage = ({ data }) => {
+  const { isMobile } = useViewportSize();
+  const { containerRef, y } = useParallax(isMobile ? PARALLAX_DEPTH.FRONT : PARALLAX_DEPTH.BACKGROUND);
 
   return (
-    <Layout>
+    <Layout ref={containerRef}>
       <SEO title="fsvdr" />
 
-      <Container>
-        <BigText as={motion.h1} style={{ y }}>
-          Oh hi, my name is Fernando. I’m a <GhostText>front end developer</GhostText> based in Mexico City.
-        </BigText>
+      <Section>
+        <Hero>
+          <Title>
+            Hey now! My name is Fernando, I’m a <GhostText>front end developer</GhostText> based in Mexico City.
+          </Title>
 
-        <motion.div className="intro" ref={containerRef}>
-          <p>
-            I build clean and modern <b>user interfaces</b> <i>a.k.a.</i> websites and apps. Currently I&apos;m digging
-            into accessibility and performance.
-          </p>
+          <HeroImage as={motion.div} style={{ y }}>
+            <Image
+              image={data.fsvdr}
+              alt="Fernando sits with his computer at a table, pretending to be cooler than he actually is"
+            />
+          </HeroImage>
+        </Hero>
 
-          <p>
-            I work as a lead front end developer at Blac-Sheep where I work closely with our clients to bring new
-            features to their apps.
-          </p>
-        </motion.div>
-      </Container>
+        <Lead>
+          I make websites and apps{' '}
+          <span className="subtle">that express uniqueness through design, interactivity and accessibility.</span>
+        </Lead>
+
+        <Availability>Available for freelance</Availability>
+      </Section>
     </Layout>
   );
+};
+
+export const query = graphql`
+  query {
+    fsvdr: file(relativePath: { eq: "fsvdr.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 500) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`;
+
+IndexPage.propTypes = {
+  data: PropTypes.shape({
+    fsvdr: PropTypes.object.isRequired,
+  }).isRequired,
 };
 
 export default IndexPage;

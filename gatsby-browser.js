@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 
 import './src/typeface-trenda.css';
+import { Helmet } from 'react-helmet';
 import { theme, GlobalStyles } from './src/App.styles';
-import MenuProvider from './src/context/menu';
-import SiteNav from './src/components/site-nav';
 
 // eslint-disable-next-line import/prefer-default-export
 export const wrapRootElement = ({ element }) => {
@@ -13,11 +12,13 @@ export const wrapRootElement = ({ element }) => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
 
-      <MenuProvider>
-        {element}
+      <Helmet
+        meta={[
+          { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover' },
+        ]}
+      />
 
-        <SiteNav />
-      </MenuProvider>
+      {element}
     </ThemeProvider>
   );
 };
