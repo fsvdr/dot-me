@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Footer from './footer';
 
-export const Wordmark = styled.div`
+export const Wordmark = styled.abbr`
   position: absolute;
   top: 1.6rem;
   left: 1rem;
   font-weight: ${props => props.theme.fontWeight.black};
   font-size: ${props => props.theme.fontSize.sm};
   text-transform: uppercase;
+  text-decoration: none;
 
   @media screen and (min-width: ${props => props.theme.breakpoints.portraitTablet}) {
     position: absolute;
@@ -26,7 +27,7 @@ const Layout = ({ children }) => (
   <>
     {children}
 
-    <Wordmark>fsvdr</Wordmark>
+    <Wordmark title="Fernando Saavedra">fsvdr</Wordmark>
     <Footer />
   </>
 );

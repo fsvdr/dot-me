@@ -18,6 +18,7 @@ const typography = {
     base: 'Trenda',
   },
   fontSize: {
+    xs: '0.563em',
     sm: '0.75em',
     base: '1em',
     md: '1.333em',

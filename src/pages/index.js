@@ -12,8 +12,9 @@ import Image from '../components/image';
 import Layout from '../components/layout';
 import useParallax, { PARALLAX_DEPTH } from '../hooks/useParallax';
 import useViewportSize from '../hooks/useViewportSize';
+import SiteNav from '../components/site-nav';
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location }) => {
   const { isMobile } = useViewportSize();
   const { containerRef, y } = useParallax(isMobile ? PARALLAX_DEPTH.FRONT : PARALLAX_DEPTH.BACKGROUND);
 
@@ -41,6 +42,8 @@ const IndexPage = ({ data }) => {
         </Lead>
 
         <Availability>Available for freelance</Availability>
+
+        <SiteNav route={location.pathname.slice(1)} />
       </Section>
     </Layout>
   );
@@ -61,6 +64,9 @@ export const query = graphql`
 IndexPage.propTypes = {
   data: PropTypes.shape({
     fsvdr: PropTypes.object.isRequired,
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
   }).isRequired,
 };
 
