@@ -22,7 +22,7 @@ const typography = {
     sm: '0.75em',
     base: '1em',
     md: '1.333em',
-    lg: '2.369em',
+    lg: '4.209em',
     big: '7.478em',
   },
   fontWeight: {
@@ -246,5 +246,9 @@ export const GlobalStyles = createGlobalStyle`
   p {
     max-width: 55ch;
     margin-block-end: 2.4rem;
+  }
+
+  small {
+    font-size: ${theme.fontSize.sm};
   }
 `;

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import SEO from '../components/seo';
 
-import { Hero, HeroImage, Section, Lead, Availability } from './index.styles';
+import { Hero, HeroImage, Section, Lead, Availability, Work, Project } from './index.styles';
 import GhostText from '../components/ghost-text';
 import Title from '../components/title';
 import Image from '../components/image';
@@ -24,7 +24,7 @@ const IndexPage = ({ data, location }) => {
 
       <Section>
         <Hero>
-          <Title>
+          <Title size="big">
             Hey now! My name is Fernando, I’m a <GhostText>front end developer</GhostText> based in Mexico City.
           </Title>
 
@@ -45,6 +45,43 @@ const IndexPage = ({ data, location }) => {
 
         <SiteNav route={location.pathname.slice(1)} />
       </Section>
+
+      <Work>
+        <Title as="h2">
+          <span className="anchor" />
+
+          <span>
+            Featured <br />
+            <GhostText>Work</GhostText>
+          </span>
+        </Title>
+
+        <div>
+          <Project>
+            <Title as="h3" size="md">
+              <a href="https://moco-comics.com" target="_blank" rel="noopener noreferrer">
+                <GhostText>Moco-Comics</GhostText>
+                <br /> Blog & E-Commerce
+              </a>
+            </Title>
+
+            <p>Website branding and front end implementation</p>
+            <small>/ react / gatsby / styled-components / paypal-api /</small>
+          </Project>
+
+          <Project>
+            <Title as="h3" size="md">
+              <a href="https://drsaavedra.mx" target="_blank" rel="noopener noreferrer">
+                <GhostText>Dr. Saavedra</GhostText>
+                <br /> Landing Page & Blog
+              </a>
+            </Title>
+
+            <p>Digital branding and full stack implementation</p>
+            <small>/ react / gatsby / css-modules /</small>
+          </Project>
+        </div>
+      </Work>
     </Layout>
   );
 };
