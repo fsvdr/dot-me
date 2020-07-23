@@ -5,14 +5,16 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import SEO from '../components/seo';
 
-import { Hero, HeroImage, Section, Lead, Availability, Work, Project } from './index.styles';
-import GhostText from '../components/ghost-text';
-import Title from '../components/title';
+import { Hero, HeroImage, Lead, Availability, Work, Project } from './index.styles';
+import GhostText from '../styles/ghost-text';
+import Title from '../styles/title';
 import Image from '../components/image';
 import Layout from '../components/layout';
 import useParallax, { PARALLAX_DEPTH } from '../hooks/useParallax';
 import useViewportSize from '../hooks/useViewportSize';
 import SiteNav from '../components/site-nav';
+import Contact from '../components/contact';
+import Section from '../styles/section';
 
 const IndexPage = ({ data, location }) => {
   const { isMobile } = useViewportSize();
@@ -58,7 +60,7 @@ const IndexPage = ({ data, location }) => {
 
         <div>
           <Project>
-            <Title as="h3" size="md">
+            <Title as="h3" size="xl">
               <a href="https://moco-comics.com" target="_blank" rel="noopener noreferrer">
                 <GhostText>Moco-Comics</GhostText>
                 <br /> Blog & E-Commerce
@@ -70,7 +72,7 @@ const IndexPage = ({ data, location }) => {
           </Project>
 
           <Project>
-            <Title as="h3" size="md">
+            <Title as="h3" size="xl">
               <a href="https://drsaavedra.mx" target="_blank" rel="noopener noreferrer">
                 <GhostText>Dr. Saavedra</GhostText>
                 <br /> Landing Page & Blog
@@ -82,6 +84,8 @@ const IndexPage = ({ data, location }) => {
           </Project>
         </div>
       </Work>
+
+      <Contact image={data.fsvdr} />
     </Layout>
   );
 };

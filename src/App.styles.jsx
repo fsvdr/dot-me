@@ -22,7 +22,8 @@ const typography = {
     sm: '0.75em',
     base: '1em',
     md: '1.333em',
-    lg: '4.209em',
+    lg: '1.777em',
+    xl: '4.209em',
     big: '7.478em',
   },
   fontWeight: {

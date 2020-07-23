@@ -1,26 +1,6 @@
 import styled from 'styled-components';
-import Title from '../components/title';
-
-export const Section = styled.section`
-  inline-size: 100%;
-  padding: 2.4rem calc(env(safe-area-inset-left) + 0.8rem) 0;
-  overflow-x: hidden;
-
-  & .subtle {
-    color: ${props => props.theme.color.textSubtle};
-  }
-
-  @media screen and (min-width: ${props => props.theme.breakpoints.portraitTablet}) {
-    padding-inline-start: 7vw;
-    padding-inline-end: 7vw;
-  }
-
-  @media screen and (min-width: ${props => props.theme.breakpoints.widthConstraint}) {
-    display: grid;
-    padding-inline-start: calc((100vw - ${props => props.theme.breakpoints.widthConstraint}) / 2 + 7vw);
-    padding-inline-end: calc((100vw - ${props => props.theme.breakpoints.widthConstraint}) / 2 + 7vw);
-  }
-`;
+import Title from '../styles/title';
+import Section from '../styles/section';
 
 export const Hero = styled.div`
   position: relative;
@@ -138,7 +118,7 @@ export const Project = styled.article`
   }
 
   & ${Title} {
-    font-size: min(12vw, ${props => props.theme.fontSize.lg});
+    font-size: min(12vw, ${props => props.theme.fontSize.xl});
     margin-block-end: 0;
   }
 

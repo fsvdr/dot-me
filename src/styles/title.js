@@ -11,6 +11,10 @@ const Title = styled.h1`
       return `font-size: ${props.theme.fontSize.lg};`;
     }
 
+    if (props.size === 'xl') {
+      return `font-size: ${props.theme.fontSize.xl};`;
+    }
+
     return `font-size: ${props.theme.fontSize.md};`;
   }}
   text-transform: uppercase;

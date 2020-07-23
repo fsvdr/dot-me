@@ -47,7 +47,7 @@ const SiteLink = styled(Link)`
 
 const SiteNav = ({ route }) => {
   return (
-    <Nav>
+    <Nav aria-label="Site navigation">
       <ul>
         {route !== '' && (
           <li>
