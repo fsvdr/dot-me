@@ -1,8 +1,8 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useRef, useState, useLayoutEffect } from 'react';
-import PropTypes from 'prop-types';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
 import styled from 'styled-components';
+import { useStaticQuery, graphql } from 'gatsby';
 import Image from './image';
 import Section, { SectionAnchor } from '../styles/section';
 import Title from '../styles/title';
@@ -49,10 +49,21 @@ const Email = styled.div`
   }
 `;
 
-const Contact = ({ image }) => {
+const Contact = () => {
   const elementRef = useRef(null);
   const [elementTop, setElementTop] = useState(0);
   const { scrollY } = useViewportScroll();
+  const data = useStaticQuery(graphql`
+    query {
+      computer: file(relativePath: { eq: "computer.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 500) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `);
 
   const y = useTransform(scrollY, [elementTop, elementTop + 1], [0, 0.2], { clamp: false });
 
@@ -86,14 +97,10 @@ const Contact = ({ image }) => {
       </p>
 
       <Figure as={motion.div} style={{ y }}>
-        <Image image={image} />
+        <Image image={data.computer} />
       </Figure>
     </ContactSection>
   );
-};
-
-Contact.propTypes = {
-  image: PropTypes.object.isRequired,
 };
 
 export default Contact;

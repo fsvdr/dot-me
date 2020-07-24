@@ -85,7 +85,7 @@ const IndexPage = ({ data, location }) => {
         </div>
       </Work>
 
-      <Contact image={data.computer} />
+      <Contact />
     </Layout>
   );
 };
@@ -99,20 +99,12 @@ export const query = graphql`
         }
       }
     }
-    computer: file(relativePath: { eq: "computer.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
   }
 `;
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
     fsvdr: PropTypes.object.isRequired,
-    computer: PropTypes.object.isRequired,
   }).isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
