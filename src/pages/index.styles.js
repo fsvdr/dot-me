@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Title from '../styles/title';
-import Section from '../styles/section';
+import Section, { SectionAnchor } from '../styles/section';
 
 export const Hero = styled.div`
   position: relative;
@@ -55,24 +55,12 @@ export const Availability = styled.p`
 `;
 
 export const Work = styled(Section)`
-  margin-block-start: 2rem;
+  margin-block-start: 4rem;
   counter-reset: featured-works;
 
   & > ${Title} {
     letter-spacing: 1px;
     margin-block-end: 4rem;
-
-    & .anchor {
-      content: '';
-      display: block;
-      width: 1.6em;
-      height: 1.6em;
-      background-image: url('icons/anchor.svg');
-      background-position: center;
-      background-repeat: none;
-      background-size: contain;
-      margin-block-end: 0.8rem;
-    }
   }
 
   @media screen and (min-width: ${props => props.theme.breakpoints.portraitTablet}) {
@@ -89,7 +77,7 @@ export const Work = styled(Section)`
       transform: rotate(180deg);
       margin-block-end: 0;
 
-      & .anchor {
+      & ${SectionAnchor} {
         order: 1;
         margin-block-end: 0;
         margin-inline-start: 1.6rem;

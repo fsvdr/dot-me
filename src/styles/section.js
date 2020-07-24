@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+export const SectionAnchor = styled.span`
+  display: block;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-image: url('icons/anchor.svg');
+  background-position: center;
+  background-repeat: none;
+  background-size: contain;
+  margin-block-end: 0.8rem;
+`;
+
 const Section = styled.section`
   position: relative;
   inline-size: 100%;

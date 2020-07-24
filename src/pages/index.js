@@ -14,7 +14,7 @@ import useParallax, { PARALLAX_DEPTH } from '../hooks/useParallax';
 import useViewportSize from '../hooks/useViewportSize';
 import SiteNav from '../components/site-nav';
 import Contact from '../components/contact';
-import Section from '../styles/section';
+import Section, { SectionAnchor } from '../styles/section';
 
 const IndexPage = ({ data, location }) => {
   const { isMobile } = useViewportSize();
@@ -50,7 +50,7 @@ const IndexPage = ({ data, location }) => {
 
       <Work>
         <Title as="h2">
-          <span className="anchor" />
+          <SectionAnchor />
 
           <span>
             Featured <br />

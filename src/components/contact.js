@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
 import styled from 'styled-components';
 import Image from './image';
-import Section from '../styles/section';
+import Section, { SectionAnchor } from '../styles/section';
 import Title from '../styles/title';
 import GhostText from '../styles/ghost-text';
 
@@ -64,8 +64,9 @@ const Contact = ({ image }) => {
   }, [elementRef]);
 
   return (
-    <ContactSection ref={elementRef}>
+    <ContactSection ref={elementRef} id="#contact">
       <Title as="h2" size="xl">
+        <SectionAnchor />
         Got a project? <br />
         Get in touch! <br />
         No commitments. <br />
