@@ -23,7 +23,7 @@ const ContactSection = styled(Section)`
 
 const Figure = styled.div`
   position: absolute;
-  top: 30%;
+  top: 20%;
   right: 0;
   inline-size: max(50vw, 26rem);
   z-index: -1;
@@ -64,7 +64,7 @@ const Contact = ({ image }) => {
   }, [elementRef]);
 
   return (
-    <ContactSection ref={elementRef} id="#contact">
+    <ContactSection ref={elementRef} id="contact">
       <Title as="h2" size="xl">
         <SectionAnchor />
         Got a project? <br />

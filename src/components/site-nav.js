@@ -68,7 +68,7 @@ const SiteNav = ({ route }) => {
         <li>
           <SiteLink to="/blog">
             <small>Deep writing</small>
-            <span>Blog</span>
+            <span>The Blog</span>
           </SiteLink>
         </li>
 
