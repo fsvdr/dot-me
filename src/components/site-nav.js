@@ -45,7 +45,7 @@ const SiteLink = styled(Link)`
   }
 `;
 
-const SiteNav = ({ route }) => {
+const SiteNav = ({ route, showContact }) => {
   return (
     <Nav aria-label="Site navigation">
       <ul>
@@ -72,12 +72,14 @@ const SiteNav = ({ route }) => {
           </SiteLink>
         </li>
 
-        <li>
-          <SiteLink as="a" href="#contact" internal="true">
-            <small>How to</small>
-            <span>Contact</span>
-          </SiteLink>
-        </li>
+        {showContact && (
+          <li>
+            <SiteLink as="a" href="#contact" internal="true">
+              <small>How to</small>
+              <span>Contact</span>
+            </SiteLink>
+          </li>
+        )}
       </ul>
     </Nav>
   );
@@ -85,6 +87,11 @@ const SiteNav = ({ route }) => {
 
 SiteNav.propTypes = {
   route: PropTypes.oneOf(['', 'about', 'blog']).isRequired,
+  showContact: PropTypes.bool,
+};
+
+SiteNav.defaultProps = {
+  showContact: true,
 };
 
 export default SiteNav;
