@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Title = styled.h1`
+  max-inline-size: 62rem;
   font-weight: ${props => props.theme.fontWeight.black};
   ${props => {
     if (props.size === 'big') {

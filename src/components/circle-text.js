@@ -8,6 +8,9 @@ const Character = styled.span`
   display: inline-block;
   width: 1ch;
   height: var(--radius);
+  font-size: ${props => props.theme.fontSize.sm};
+  font-weight: ${props => props.theme.fontWeight.black};
+  text-transform: uppercase;
   text-align: center;
   line-height: 1;
   transform-origin: bottom center;
@@ -22,6 +25,7 @@ const Container = styled.small`
   justify-content: center;
   width: calc(var(--radius) * 2);
   height: calc(var(--radius) * 2);
+  transform: rotate(-45deg);
 
   &:hover ${Character} {
     color: ${props => props.theme.color.accent};
@@ -31,7 +35,7 @@ const Container = styled.small`
 const Badge = styled.span`
   position: absolute;
   align-self: center;
-  transform: rotate(-12deg);
+  transform: rotate(32deg);
 `;
 
 const CircleText = ({ radius, text, badge }) => {

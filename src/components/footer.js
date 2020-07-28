@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CircleText from './curve-text';
+import CircleText from './circle-text';
 
 const StyledFooter = styled.footer`
   display: flex;

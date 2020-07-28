@@ -8,7 +8,6 @@ export const Hero = styled.div`
 
   & ${Title} {
     position: relative;
-    max-inline-size: 62rem;
   }
 
   @media screen and (min-width: ${props => props.theme.breakpoints.portraitTablet}) {

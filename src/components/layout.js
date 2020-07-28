@@ -29,8 +29,8 @@ const Layout = ({ children }) => (
     {children}
 
     <Wordmark title="Fernando Saavedra">fsvdr</Wordmark>
-    <SocialsNav />
     <Footer />
+    <SocialsNav />
   </>
 );
 
