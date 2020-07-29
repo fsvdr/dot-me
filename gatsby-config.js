@@ -32,5 +32,30 @@ module.exports = {
     // `gatsby-plugin-offline`,
     `gatsby-plugin-eslint`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-vscode`,
+            options: {
+              theme: 'Horizon',
+              extensions: ['horizon-theme-vscode'],
+              inlineCode: {
+                marker: '··',
+                className: 'inline-code',
+              },
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content`,
+        path: `${__dirname}/src/posts`,
+      },
+    },
   ],
 };

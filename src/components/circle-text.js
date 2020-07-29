@@ -25,7 +25,7 @@ const Container = styled.small`
   justify-content: center;
   width: calc(var(--radius) * 2);
   height: calc(var(--radius) * 2);
-  transform: rotate(-45deg);
+  transform: rotate(-60deg);
 
   &:hover ${Character} {
     color: ${props => props.theme.color.accent};
@@ -35,7 +35,8 @@ const Container = styled.small`
 const Badge = styled.span`
   position: absolute;
   align-self: center;
-  transform: rotate(32deg);
+  font-weight: ${props => props.theme.fontWeight.black};
+  transform: rotate(45deg);
 `;
 
 const CircleText = ({ radius, text, badge }) => {
