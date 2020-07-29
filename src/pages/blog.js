@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Section from '../styles/section';
@@ -8,7 +9,12 @@ import GhostText from '../styles/ghost-text';
 import { Posts, Post } from './blog.styles';
 import SiteNav from '../components/site-nav';
 
-const BlogPage = () => {
+const BlogPage = ({
+  data: {
+    allMarkdownRemark: { edges: posts },
+  },
+}) => {
+  console.log(posts);
   return (
     <Layout>
       <SEO title="Blog" />
@@ -22,17 +28,51 @@ const BlogPage = () => {
         <SiteNav showContact={false} />
 
         <Posts>
-          <Post>
-            <h2>
-              <Link to="/its-here-finally">It&apos;s here. Finally</Link>
-            </h2>
+          {posts.map(({ node: { frontmatter: { path, title, series } } }) => (
+            <Post key={path}>
+              <h2>
+                <Link to={path}>{title}</Link>
+              </h2>
 
-            <span>No. 1</span>
-          </Post>
+              <span>{`No. ${series}`}</span>
+            </Post>
+          ))}
         </Posts>
       </Section>
     </Layout>
   );
+};
+
+export const query = graphql`
+  query {
+    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___series }) {
+      edges {
+        node {
+          frontmatter {
+            path
+            title
+            series
+          }
+        }
+      }
+    }
+  }
+`;
+
+BlogPage.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.shape({
+        node: PropTypes.shape({
+          frontmatter: PropTypes.shape({
+            path: PropTypes.string,
+            title: PropTypes.string,
+            series: PropTypes.number,
+          }),
+        }),
+      }),
+    }),
+  }).isRequired,
 };
 
 export default BlogPage;
