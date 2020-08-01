@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
-import { Hero, HeroImage, Lead, Availability, Work, Project } from './index.styles';
+import { Hero, HeroImage, Lead, Availability, Work, Project } from '../styles/index.styles';
 import GhostText from '../styles/ghost-text';
 import Title from '../styles/title';
 import Image from '../components/image';

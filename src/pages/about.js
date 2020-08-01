@@ -8,7 +8,7 @@ import SEO from '../components/seo';
 import Title from '../styles/title';
 import Contact from '../components/contact';
 import GhostText from '../styles/ghost-text';
-import { Hero, HeroImage, Lead, Motivation, Expertise, Services, Hobbies, Songs } from './about.styles';
+import { Hero, HeroImage, Lead, Motivation, Expertise, Services, Hobbies, Songs } from '../styles/about.styles';
 import Image from '../components/image';
 import CircleText from '../components/circle-text';
 import SiteNav from '../components/site-nav';

@@ -6,7 +6,7 @@ import SEO from '../components/seo';
 import Section from '../styles/section';
 import Title from '../styles/title';
 import GhostText from '../styles/ghost-text';
-import { Posts, Post } from './blog.styles';
+import { Posts, Post } from '../styles/blog.styles';
 import SiteNav from '../components/site-nav';
 
 const BlogPage = ({
