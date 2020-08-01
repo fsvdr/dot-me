@@ -25,8 +25,6 @@ exports.createPages = async ({ actions, graphql }) => {
     const hasPrevious = index > 0;
     const hasNext = index + 1 < pages.length;
 
-    console.log('[PAGE]', index, hasPrevious, hasNext);
-
     createPage({
       path: node.frontmatter.path,
       component: path.resolve('src/templates/post.js'),

@@ -16,12 +16,12 @@ import useParallax, { PARALLAX_DEPTH } from '../hooks/useParallax';
 import { SectionAnchor } from '../styles/section';
 import SpotifySong from '../components/spotify-song';
 
-const AboutPage = ({ data }) => {
+const AboutPage = ({ data, location }) => {
   const { containerRef, y } = useParallax(PARALLAX_DEPTH.BACKGROUND);
 
   return (
     <Layout ref={containerRef}>
-      <SEO title="About me" />
+      <SEO title="About me — FSVDR" canonical={location.pathname} />
 
       <Hero>
         <Title size="big">
@@ -152,6 +152,9 @@ export const query = graphql`
 AboutPage.propTypes = {
   data: PropTypes.shape({
     working: PropTypes.object.isRequired,
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
   }).isRequired,
 };
 

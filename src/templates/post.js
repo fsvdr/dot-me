@@ -19,9 +19,10 @@ const PostTemplate = ({
   return (
     <Layout>
       <SEO
-        title={frontmatter.title}
+        title={`${frontmatter.title} — FSVDR`}
         description={frontmatter.punchline}
         meta={[{ name: 'keywords', content: frontmatter.tags.join(', ') }]}
+        canonical={frontmatter.path}
       />
 
       <Article role="main">

@@ -13,11 +13,11 @@ const BlogPage = ({
   data: {
     allMarkdownRemark: { edges: posts },
   },
+  location,
 }) => {
-  console.log(posts);
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO title="Blog — FSVDR" canonical={location.pathname} />
 
       <Section>
         <Title size="big">
@@ -72,6 +72,9 @@ BlogPage.propTypes = {
         }),
       }),
     }),
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
   }).isRequired,
 };
 

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Front end developer`,
-    description: `Oh hi! I'm Fernando a front end developer based in Mexico City. I build clean and modern user interfaces for the web and mobile apps.`,
+    title: `FSVDR — Front end developer`,
+    description: `My name is Fernando Saavedra, I'm a front end developer based in Mexico City. I make websites and apps that express uniqueness through design, interactivity and accessibility.`,
     author: `@fsvdr`,
   },
   plugins: [

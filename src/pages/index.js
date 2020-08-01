@@ -3,7 +3,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import SEO from '../components/seo';
 
 import { Hero, HeroImage, Lead, Availability, Work, Project } from './index.styles';
 import GhostText from '../styles/ghost-text';
@@ -15,6 +14,7 @@ import useViewportSize from '../hooks/useViewportSize';
 import SiteNav from '../components/site-nav';
 import Contact from '../components/contact';
 import Section, { SectionAnchor } from '../styles/section';
+import SEO from '../components/seo';
 
 const IndexPage = ({ data, location }) => {
   const { isMobile } = useViewportSize();
@@ -22,7 +22,7 @@ const IndexPage = ({ data, location }) => {
 
   return (
     <Layout ref={containerRef}>
-      <SEO title="fsvdr" />
+      <SEO />
 
       <Section>
         <Hero>
@@ -94,7 +94,7 @@ export const query = graphql`
   query {
     fsvdr: file(relativePath: { eq: "fsvdr.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 500) {
+        fluid(maxWidth: 800) {
           ...GatsbyImageSharpFluid
         }
       }

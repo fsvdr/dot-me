@@ -12,11 +12,9 @@ export const wrapRootElement = ({ element }) => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
 
-      <Helmet
-        meta={[
-          { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover' },
-        ]}
-      />
+      <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+      </Helmet>
 
       {element}
     </ThemeProvider>
