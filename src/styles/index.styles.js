@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Title from '../styles/title';
-import Section, { SectionAnchor } from '../styles/section';
+import Title from './title';
+import Section, { SectionAnchor } from './section';
 
 export const Hero = styled.div`
   position: relative;
@@ -10,13 +10,13 @@ export const Hero = styled.div`
     position: relative;
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.portraitTablet}) {
+  @media screen and (min-width: 768px) {
     margin-block-end: 8rem;
   }
 `;
 
 export const Lead = styled.p`
-  font-size: ${props => props.theme.fontSize.md};
+  font-size: var(--font-size-md);
 `;
 
 export const HeroImage = styled.div`
@@ -29,15 +29,15 @@ export const HeroImage = styled.div`
   opacity: 0.6;
   will-change: scroll-position;
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.widthConstraint}) {
+  @media screen and (min-width: 1600px) {
     right: -2vw;
   }
 `;
 
 export const Availability = styled.p`
   position: relative;
-  font-size: ${props => props.theme.fontSize.sm};
-  font-weight: ${props => props.theme.fontWeight.black};
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-black);
   padding-inline-start: 1.6rem;
 
   &::before {
@@ -47,7 +47,7 @@ export const Availability = styled.p`
     top: 50%;
     width: 0.8em;
     height: 0.8em;
-    background-color: ${props => props.theme.color.accent};
+    background-color: var(--color-accent);
     border-radius: 50%;
     transform: translateY(-50%);
   }
@@ -62,7 +62,7 @@ export const Work = styled(Section)`
     margin-block-end: 4rem;
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.portraitTablet}) {
+  @media screen and (min-width: 768px) {
     display: flex;
     flex-flow: row nowrap;
     align-items: flex-start;
@@ -100,18 +100,18 @@ export const Project = styled.article`
     content: 'NO. ' counter(featured-works);
     position: absolute;
     display: inline-block;
-    font-size: ${props => props.theme.fontSize.sm};
-    font-weight: ${props => props.theme.fontWeight.black};
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-black);
   }
 
   & ${Title} {
-    font-size: min(12vw, ${props => props.theme.fontSize.xl});
+    font-size: min(12vw, var(--font-size-xl));
     margin-block-end: 0;
   }
 
   & small {
     order: -1;
-    color: ${props => props.theme.color.textSubtle};
+    color: var(--color-text-subtle);
     padding-inline-start: 3.2rem;
   }
 `;

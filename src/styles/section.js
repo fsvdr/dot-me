@@ -18,18 +18,18 @@ const Section = styled.section`
   overflow: hidden;
 
   & .subtle {
-    color: ${props => props.theme.color.textSubtle};
+    color: var(--color-text-subtle);
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.portraitTablet}) {
+  @media screen and (min-width: 768px) {
     padding-inline-start: 7vw;
     padding-inline-end: 7vw;
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.widthConstraint}) {
+  @media screen and (min-width: 1600px) {
     display: grid;
-    padding-inline-start: calc((100vw - ${props => props.theme.breakpoints.widthConstraint}) / 2 + 7vw);
-    padding-inline-end: calc((100vw - ${props => props.theme.breakpoints.widthConstraint}) / 2 + 7vw);
+    padding-inline-start: calc((100vw - 1600px) / 2 + 7vw);
+    padding-inline-end: calc((100vw - 1600px) / 2 + 7vw);
   }
 `;
 

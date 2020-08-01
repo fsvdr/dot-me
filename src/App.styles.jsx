@@ -1,56 +1,33 @@
 import { createGlobalStyle } from 'styled-components';
 
-const colors = {
-  black: '#000000',
-  white: '#ffffff',
-  red: '#FF4A4A',
-};
+const GlobalStyles = createGlobalStyle`
+  :root {
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-red: #FF4A4A;
 
-const functionalColors = {
-  accent: colors.red,
-  text: colors.white,
-  textSubtle: '#999999',
-};
+    --color-accent: var(--color-red);
+    --color-text: var(--color-white);
+    --color-text-subtle: #999999;
 
-const typography = {
-  fontFamily: {
-    display: 'Trenda',
-    base: 'Trenda',
-  },
-  fontSize: {
-    xs: '0.563em',
-    sm: '0.75em',
-    base: '1em',
-    md: '1.333em',
-    lg: '1.777em',
-    xl: '4.209em',
-    big: '7.478em',
-  },
-  fontWeight: {
-    regular: 400,
-    black: 800,
-  },
-};
+    --font-family-display: 'Trenda';
+    --font-family-base: 'Trenda';
 
-const breakpoints = {
-  portraitTablet: '768px',
-  mediumViewport: '1024px',
-  widthConstraint: '1600px',
-};
+    --font-size-xs: 0.563em;
+    --font-size-sm: 0.75em;
+    --font-size-base: 1em;
+    --font-size-md: 1.333em;
+    --font-size-lg: 1.777em;
+    --font-size-xl: 4.209em;
+    --font-size-big: 7.478em;
+    
+    --font-weight-regular: 400;
+    --font-weight-black: 800;
 
-const depth = {
-  siteNavLinks: 5,
-  siteNav: 0,
-};
+    --z-index-site-nav-links: 5,
+    --z-index-site-nav: 0
+  }
 
-export const theme = {
-  color: { ...colors, ...functionalColors },
-  ...typography,
-  breakpoints,
-  depth,
-};
-
-export const GlobalStyles = createGlobalStyle`
   html,
   body,
   h1,
@@ -207,16 +184,16 @@ export const GlobalStyles = createGlobalStyle`
     min-height: 100vh; /* [1] */
     min-height: -webkit-fill-available; /* [2] */
     height: auto;
-    font-family: ${theme.fontFamily.base};
+    font-family: var(--font-family-base);
     font-size: 1.125em;
-    font-weight: ${theme.fontWeight.regular};
+    font-weight: var(--font-weight-regular);
     line-height: 1.6;
-    color: ${theme.color.text};
+    color: var(--color-text);
     text-rendering: optimizeLegibility; /* [3] */
     -webkit-font-smoothing: antialiased; /* [4] */
     -moz-osx-font-smoothing: grayscale; /* [5] */
     font-smoothing: antialiased; /* stylelint-disable-line */
-    background-color: ${theme.color.black};
+    background-color: var(--color-black);
   }
 
   [hidden] {
@@ -240,8 +217,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   b {
-    font-weight: ${theme.fontWeight.bold};
-    color: ${theme.color.white};
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
   }
 
   p {
@@ -250,6 +227,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   small {
-    font-size: ${theme.fontSize.sm};
+    font-size: var(--font-size-sm);
   }
 `;
+
+export default GlobalStyles;

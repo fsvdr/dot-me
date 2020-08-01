@@ -8,8 +8,8 @@ const Character = styled.span`
   display: inline-block;
   width: 1ch;
   height: var(--radius);
-  font-size: ${props => props.theme.fontSize.sm};
-  font-weight: ${props => props.theme.fontWeight.black};
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-black);
   text-transform: uppercase;
   text-align: center;
   line-height: 1;
@@ -28,14 +28,14 @@ const Container = styled.small`
   transform: rotate(-60deg);
 
   &:hover ${Character} {
-    color: ${props => props.theme.color.accent};
+    color: var(--color-accent);
   }
 `;
 
 const Badge = styled.span`
   position: absolute;
   align-self: center;
-  font-weight: ${props => props.theme.fontWeight.black};
+  font-weight: var(--font-weight-black);
   transform: rotate(45deg);
 `;
 

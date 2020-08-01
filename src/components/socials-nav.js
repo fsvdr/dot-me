@@ -7,8 +7,8 @@ export const StyledSocialsNav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0 0.8rem calc(env(safe-area-inset-bottom) + 1.6rem);
-  font-weight: ${props => props.theme.fontWeight.black};
-  font-size: ${props => props.theme.fontSize.sm};
+  font-weight: var(--font-weight-black);
+  font-size: var(--font-size-sm);
 
   & ul {
     display: flex;
@@ -25,10 +25,10 @@ export const StyledSocialsNav = styled.nav`
   }
 
   & span {
-    color: ${props => props.theme.color.accent};
+    color: var(--color-accent);
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.portraitTablet}) {
+  @media screen and (min-width: 768px) {
     position: fixed;
     top: 0;
     right: 0.8rem;
@@ -40,8 +40,8 @@ export const StyledSocialsNav = styled.nav`
     padding-block-end: 0.8rem;
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.widthConstraint}) {
-    right: calc((100vw - ${props => props.theme.breakpoints.widthConstraint}) / 2);
+  @media screen and (min-width: 1600px) {
+    right: calc((100vw - 1600px) / 2);
   }
 `;
 

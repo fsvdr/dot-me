@@ -20,8 +20,8 @@ const SiteLink = styled(Link)`
   flex-flow: column nowrap;
 
   & small {
-    font-size: ${props => props.theme.fontSize.xs};
-    font-weight: ${props => props.theme.fontWeight.black};
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-black);
     text-transform: uppercase;
 
     &::after {
@@ -40,7 +40,7 @@ const SiteLink = styled(Link)`
   }
 
   & span {
-    font-weight: ${props => props.theme.fontWeight.black};
+    font-weight: var(--font-weight-black);
     text-transform: uppercase;
   }
 `;

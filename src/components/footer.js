@@ -8,15 +8,15 @@ const StyledFooter = styled.footer`
   align-items: center;
   width: 100%;
   padding: 1.6rem 0.8rem;
-  font-size: ${props => props.theme.fontSize.sm};
-  font-weight: ${props => props.theme.fontWeight.black};
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-size-black);
   text-transform: uppercase;
 
   & > small {
     margin: 0 0.8rem;
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.portraitTablet}) {
+  @media screen and (min-width: 768px) {
     padding-inline-start: 4.4rem;
     padding-inline-end: 4.4rem;
   }

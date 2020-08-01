@@ -5,7 +5,7 @@ import Title from '../styles/title';
 export const Article = styled(Section)`
   width: 100%;
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.mediumViewport}) {
+  @media screen and (min-width: 1024px) {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(18rem, 33%);
     grid-template-rows: auto auto minmax(0, 1fr);
@@ -39,14 +39,14 @@ export const Header = styled.header`
       -webkit-text-stroke: 0;
 
       & span:not(:last-child) {
-        color: ${props => props.theme.color.accent};
+        color: var(--color-accent);
       }
     }
   }
 `;
 
 export const Lead = styled.p`
-  font-size: ${props => props.theme.fontSize.md};
+  font-size: var(--font-size-md);
   margin-block-end: 4rem;
 `;
 
@@ -56,10 +56,10 @@ export const Body = styled.div`
 
   & h2 {
     max-inline-size: 62rem;
-    font-size: ${props => props.theme.fontSize.lg};
+    font-size: var(--font-size-lg);
     text-transform: uppercase;
     line-height: 120%;
-    -webkit-text-stroke: 2px ${props => props.theme.color.white};
+    -webkit-text-stroke: 2px var(--color-white);
     margin-block-end: 2rem;
 
     &::before {
@@ -76,17 +76,17 @@ export const Body = styled.div`
   }
 
   & p {
-    color: ${props => props.theme.color.textSubtle};
+    color: var(--color-text-subtle);
   }
 
   & a {
     text-decoration: underline;
     text-decoration-style: dotted;
-    text-decoration-color: ${props => props.theme.color.white};
+    text-decoration-color: var(--color-white);
     transition: color 0.3s;
 
     &:hover {
-      color: ${props => props.theme.color.white};
+      color: var(--color-white);
     }
   }
 
@@ -109,28 +109,28 @@ export const Aside = styled.aside`
   grid-area: aside;
   padding-block-start: 4rem;
   margin-block-end: 4rem;
-  border-block-start: 1px dotted ${props => props.theme.color.textSubtle};
+  border-block-start: 1px dotted var(--color-text-subtle);
 
   & > p {
-    color: ${props => props.theme.color.textSubtle};
+    color: var(--color-text-subtle);
     margin-block-end: 0.8rem;
 
     & a {
-      color: ${props => props.theme.color.white};
+      color: var(--color-white);
       text-decoration: underline;
       text-decoration-style: dotted;
-      text-decoration-color: ${props => props.theme.color.white};
+      text-decoration-color: var(--color-white);
     }
   }
 
   & nav {
     text-transform: uppercase;
-    font-size: ${props => props.theme.fontSize.sm};
-    font-weight: ${props => props.theme.fontWeight.black};
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-black);
     margin-block-start: 1.6rem;
 
     & span {
-      color: ${props => props.theme.color.textSubtle};
+      color: var(--color-text-subtle);
       margin-inline-end: 0.8rem;
     }
 
@@ -140,7 +140,7 @@ export const Aside = styled.aside`
     }
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.mediumViewport}) {
+  @media screen and (min-width: 1024px) {
     padding: 0;
     border: 0;
   }
@@ -162,16 +162,16 @@ export const Author = styled.div`
 
   & .author-name {
     text-transform: uppercase;
-    font-size: ${props => props.theme.fontSize.sm};
+    font-size: var(--font-size-sm);
   }
 
   & .time-to-read {
-    font-size: ${props => props.theme.fontSize.sm};
-    color: ${props => props.theme.color.textSubtle};
+    font-size: var(--font-size-sm);
+    color: var(--color-text-subtle);
     margin-block-end: 0;
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.mediumViewport}) {
+  @media screen and (min-width: 1024px) {
     margin-block-end: 0;
   }
 `;

@@ -8,12 +8,12 @@ export const Posts = styled.div`
 
 export const Post = styled.article`
   width: 100%;
-  font-weight: ${props => props.theme.fontWeight.black};
-  font-size: ${props => props.theme.fontSize.md};
+  font-weight: var(--font-weight-black);
+  font-size: var(--font-size-md);
 
   & span {
-    font-size: ${props => props.theme.fontSize.xs};
-    color: ${props => props.theme.color.textSubtle};
+    font-size: var(--font-size-xs);
+    color: var(--color-text-subtle);
     margin-inline-start: 0.8rem;
   }
 

@@ -6,7 +6,7 @@ const GhostText = styled.span`
   text-transform: inherit;
   color: transparent;
   letter-spacing: inherit;
-  -webkit-text-stroke: 2px ${props => props.theme.color.white};
+  -webkit-text-stroke: 2px var(--color-white);
 `;
 
 export default GhostText;

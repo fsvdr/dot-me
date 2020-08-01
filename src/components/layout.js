@@ -8,12 +8,12 @@ export const Wordmark = styled.abbr`
   position: absolute;
   top: 1.6rem;
   left: 1rem;
-  font-weight: ${props => props.theme.fontWeight.black};
-  font-size: ${props => props.theme.fontSize.sm};
+  font-weight: var(--font-weight-black);
+  font-size: var(--font-size-sm);
   text-transform: uppercase;
   text-decoration: none;
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.portraitTablet}) {
+  @media screen and (min-width: 768px) {
     position: absolute;
     left: 0.8rem;
     height: 100vh;

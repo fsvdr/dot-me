@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Section, { SectionAnchor } from '../styles/section';
-import Title from '../styles/title';
-import GhostText from '../styles/ghost-text';
+import Section, { SectionAnchor } from './section';
+import Title from './title';
+import GhostText from './ghost-text';
 
 export const Hero = styled(Section)`
   margin-block-end: 2rem;
@@ -30,7 +30,7 @@ export const HeroImage = styled.div`
 `;
 
 export const Lead = styled.p`
-  font-size: ${props => props.theme.fontSize.md};
+  font-size: var(--font-size-md);
 `;
 
 export const Motivation = styled(Section)`
@@ -46,7 +46,7 @@ export const Expertise = styled(Section)`
     display: none;
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.portraitTablet}) {
+  @media screen and (min-width: 786px) {
     display: flex;
     flex-flow: row nowrap;
     align-items: flex-start;
@@ -83,7 +83,7 @@ export const Services = styled.ul`
   list-style-type: none;
 
   & ${Title} {
-    font-size: ${props => props.theme.fontSize.lg};
+    font-size: var(--font-size-lg);
     margin-block-end: 0;
     margin-block-start: 2rem;
   }
@@ -93,7 +93,7 @@ export const Services = styled.ul`
   }
 
   & small {
-    color: ${props => props.theme.color.textSubtle};
+    color: var(--color-text-subtle);
   }
 `;
 
@@ -117,7 +117,7 @@ export const Songs = styled(MediaStats)`
     margin-block-end: 0;
 
     & ${GhostText} {
-      font-size: ${props => props.theme.fontSize.lg};
+      font-size: var(--font-size-lg);
     }
   }
 
@@ -137,10 +137,10 @@ export const Songs = styled(MediaStats)`
         position: absolute;
         top: 25%;
         left: -1rem;
-        font-weight: ${props => props.theme.fontWeight.black};
-        font-size: ${props => props.theme.fontSize.big};
+        font-weight: var(--font-weight-black);
+        font-size: var(--font-size-big);
         color: transparent;
-        -webkit-text-stroke: 2px ${props => props.theme.color.white};
+        -webkit-text-stroke: 2px var(--color-white);
         z-index: -1;
         transform: translateY(-50%);
       }
@@ -155,7 +155,7 @@ export const Songs = styled(MediaStats)`
     }
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.mediumViewport}) {
+  @media screen and (min-width: 1024px) {
     & > div > div:not(:first-child) {
       margin-top: -30%;
     }

@@ -13,10 +13,10 @@ const ContactSection = styled(Section)`
   padding-block-end: 6rem;
 
   & > ${Title} {
-    font-size: min(12vw, ${props => props.theme.fontSize.xl});
+    font-size: min(12vw, var(--font-size-xl));
   }
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.portraitTablet}) {
+  @media screen and (min-width: 768px) {
     padding-block-start: 8rem;
   }
 `;
@@ -33,8 +33,8 @@ const Figure = styled.div`
 const Email = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  font-size: ${props => props.theme.fontSize.lg};
-  font-weight: ${props => props.theme.fontWeight.black};
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-black);
   text-transform: uppercase;
   margin-block-start: 8rem;
   margin-block-end: 8rem;

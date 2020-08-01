@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider } from 'styled-components';
 
 import './src/typeface-trenda.css';
 import { Helmet } from 'react-helmet';
-import { theme, GlobalStyles } from './src/App.styles';
+import GlobalStyles from './src/App.styles';
 
 // eslint-disable-next-line import/prefer-default-export
 export const wrapRootElement = ({ element }) => {
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <GlobalStyles />
 
       <Helmet>
@@ -17,7 +16,7 @@ export const wrapRootElement = ({ element }) => {
       </Helmet>
 
       {element}
-    </ThemeProvider>
+    </>
   );
 };
 
