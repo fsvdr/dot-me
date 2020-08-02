@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 import SocialsNav from './socials-nav';
 import Footer from './footer';
 
@@ -28,7 +29,10 @@ const Layout = ({ children }) => (
   <>
     {children}
 
-    <Wordmark title="Fernando Saavedra">fsvdr</Wordmark>
+    <Link to="/" aria-label="Home">
+      <Wordmark title="Fernando Saavedra">fsvdr</Wordmark>
+    </Link>
+
     <Footer />
     <SocialsNav />
   </>
