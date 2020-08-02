@@ -27,7 +27,6 @@ function SEO({ lang, title, description, meta, canonical }) {
       <meta name="description" content={description || site.siteMetadata.description} />
 
       <link rel="canonical" href={`${site.siteMetadata.siteUrl}${canonical}`} />
-      <link rel="alternate" type="application/rss+xml" title="FSVDR's Blog RSS Feed" href="rss.xml" />
     </Helmet>
   );
 }
