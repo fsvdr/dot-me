@@ -61,13 +61,13 @@ const PostTemplate = ({
 
           <nav>
             {!previous ? null : (
-              <Link to={previous.frontmatter.path}>
+              <Link to={previous.frontmatter.path} rel="prev">
                 <span>Previous one:</span>
                 {previous.frontmatter.title}
               </Link>
             )}
             {!next ? null : (
-              <Link to={next.frontmatter.path}>
+              <Link to={next.frontmatter.path} rel="next">
                 <span>Next up:</span>
                 {next.frontmatter.title}
               </Link>
