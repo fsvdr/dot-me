@@ -18,7 +18,19 @@ const PostTemplate = ({
 }) => {
   return (
     <Layout>
-      <SEO title={`${frontmatter.title} — FSVDR`} description={frontmatter.punchline} canonical={frontmatter.path} />
+      <SEO
+        title={`${frontmatter.title} — FSVDR`}
+        description={frontmatter.description}
+        canonical={frontmatter.path}
+        image={frontmatter.image}
+        imageAlt={frontmatter.imageAlt}
+        og={{
+          type: 'article',
+          published_time: frontmatter.date,
+          section: frontmatter.category,
+          tag: frontmatter.tags,
+        }}
+      />
 
       <Article role="main">
         <Header>
@@ -34,7 +46,7 @@ const PostTemplate = ({
             </time>
           </Title>
 
-          <Lead>{frontmatter.punchline}</Lead>
+          <Lead>{frontmatter.description}</Lead>
         </Header>
 
         <Author>
@@ -86,13 +98,16 @@ export const query = graphql`
       html
       timeToRead
       frontmatter {
-        title
-        date: date(formatString: "YYYY-MM-DD")
         path
+        title
+        description
+        image
+        imageAlt
+        date: date(formatString: "YYYY-MM-DD")
         formattedDate: date(formatString: "MMM DD, YYYY")
-        series
-        punchline
+        category
         tags
+        series
       }
     }
     previous: markdownRemark(frontmatter: { path: { eq: $previous } }) {
@@ -123,13 +138,16 @@ PostTemplate.propTypes = {
       html: PropTypes.string,
       timeToRead: PropTypes.number,
       frontmatter: PropTypes.shape({
-        title: PropTypes.string,
-        date: PropTypes.string,
         path: PropTypes.string,
+        title: PropTypes.string,
+        description: PropTypes.string,
+        image: PropTypes.string,
+        imageAlt: PropTypes.string,
+        date: PropTypes.string,
         formattedDate: PropTypes.string,
-        series: PropTypes.number,
-        punchline: PropTypes.string,
+        category: PropTypes.string,
         tags: PropTypes.arrayOf(PropTypes.string),
+        series: PropTypes.number,
       }),
     }).isRequired,
     previous: PropTypes.shape({
