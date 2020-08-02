@@ -3,6 +3,7 @@ module.exports = {
     title: `FSVDR — Front end developer`,
     description: `My name is Fernando Saavedra, I'm a front end developer based in Mexico City. I make websites and apps that express uniqueness through design, interactivity and accessibility.`,
     author: `@fsvdr`,
+    siteUrl: 'https://fsvdr.me',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -55,6 +56,60 @@ module.exports = {
       options: {
         name: `content`,
         path: `${__dirname}/src/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return {
+                  ...edge.node.frontmatter,
+                  description: edge.node.frontmatter.punchline,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
+                  guid: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
+                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                };
+              });
+            },
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
+                  edges {
+                    node {
+                      html
+                      frontmatter {
+                        title
+                        date
+                        path
+                        punchline
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: "FSVDR's Blog RSS",
+          },
+        ],
       },
     },
   ],

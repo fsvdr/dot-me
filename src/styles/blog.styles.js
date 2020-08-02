@@ -21,3 +21,12 @@ export const Post = styled.article`
     display: inline-block;
   }
 `;
+
+export const RSSLink = styled.a`
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--color-white);
+  margin-block-end: 4rem;
+`;

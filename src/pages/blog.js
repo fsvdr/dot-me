@@ -6,7 +6,7 @@ import SEO from '../components/seo';
 import Section from '../styles/section';
 import Title from '../styles/title';
 import GhostText from '../styles/ghost-text';
-import { Posts, Post } from '../styles/blog.styles';
+import { Posts, Post, RSSLink } from '../styles/blog.styles';
 import SiteNav from '../components/site-nav';
 
 const BlogPage = ({
@@ -38,6 +38,10 @@ const BlogPage = ({
             </Post>
           ))}
         </Posts>
+
+        <RSSLink href="/rss.xml" target="_blank" rel="noopener noreferrer">
+          RSS Feed
+        </RSSLink>
       </Section>
     </Layout>
   );

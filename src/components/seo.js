@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-import baseURL from '../utils/base-url';
 
 function SEO({ lang, title, description, meta, canonical }) {
   const { site } = useStaticQuery(
@@ -13,6 +12,7 @@ function SEO({ lang, title, description, meta, canonical }) {
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -26,7 +26,8 @@ function SEO({ lang, title, description, meta, canonical }) {
 
       <meta name="description" content={description || site.siteMetadata.description} />
 
-      <link rel="canonical" href={`${baseURL()}${canonical}`} />
+      <link rel="canonical" href={`${site.siteMetadata.siteUrl}${canonical}`} />
+      <link rel="alternate" type="application/rss+xml" title="FSVDR's Blog RSS Feed" href="rss.xml" />
     </Helmet>
   );
 }
