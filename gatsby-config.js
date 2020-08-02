@@ -85,7 +85,7 @@ module.exports = {
               return allMarkdownRemark.edges.map(edge => {
                 return {
                   ...edge.node.frontmatter,
-                  description: edge.node.frontmatter.punchline,
+                  description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
                   guid: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
@@ -105,7 +105,7 @@ module.exports = {
                         title
                         date
                         path
-                        punchline
+                        description
                       }
                     }
                   }

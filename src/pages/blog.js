@@ -25,7 +25,7 @@ const BlogPage = ({
           exist? <br /> Well yes.
         </Title>
 
-        <SiteNav showContact={false} />
+        <SiteNav route="blog" showContact={false} />
 
         <Posts>
           {posts.map(({ node: { frontmatter: { path, title, series } } }) => (
@@ -66,15 +66,17 @@ export const query = graphql`
 BlogPage.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.shape({
-        node: PropTypes.shape({
-          frontmatter: PropTypes.shape({
-            path: PropTypes.string,
-            title: PropTypes.string,
-            series: PropTypes.number,
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            frontmatter: PropTypes.shape({
+              path: PropTypes.string,
+              title: PropTypes.string,
+              series: PropTypes.number,
+            }),
           }),
-        }),
-      }),
+        })
+      ),
     }),
   }).isRequired,
   location: PropTypes.shape({

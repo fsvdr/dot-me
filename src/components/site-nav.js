@@ -86,11 +86,12 @@ const SiteNav = ({ route, showContact }) => {
 };
 
 SiteNav.propTypes = {
-  route: PropTypes.oneOf(['', 'about', 'blog']).isRequired,
+  route: PropTypes.oneOf(['', 'about', 'blog']),
   showContact: PropTypes.bool,
 };
 
 SiteNav.defaultProps = {
+  route: '',
   showContact: true,
 };
 

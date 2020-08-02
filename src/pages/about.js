@@ -33,7 +33,7 @@ const AboutPage = ({ data, location }) => {
           <motion.div style={{ y }}>
             <Image image={data.working} alt="Fernando sits working on his computer at a desk surrounded by trees" />
 
-            <CircleText radius="3" text="No you went full instagramy here" />
+            <CircleText radius={3} text="No you went full instagramy here" />
           </motion.div>
         </HeroImage>
 
@@ -41,7 +41,7 @@ const AboutPage = ({ data, location }) => {
           Twenty-four year old front end developer with a<s>n obsession</s> passion for design, productivity and coffee.
         </Lead>
 
-        <SiteNav />
+        <SiteNav route="about" />
       </Hero>
 
       <Motivation>
@@ -114,19 +114,19 @@ const AboutPage = ({ data, location }) => {
             <SpotifySong
               title="Mind is a Prison by Alec Benjamin"
               uri="https://open.spotify.com/embed/track/2hGQDYmjkwTS0J7Q2bM2sF?si=v7FWRi3CRY6CBJkwB49-iA"
-              depth="0.06"
+              depth={0.06}
             />
 
             <SpotifySong
               title="Mind is a Prison by Alec Benjamin"
               uri="https://open.spotify.com/embed/track/41CgzGD7xlgnJe14R4cqkL?si=HNz18UToTOSRTZWCr5IiWw"
-              depth="0.06"
+              depth={0.06}
             />
 
             <SpotifySong
               title="Mind is a Prison by Alec Benjamin"
               uri="https://open.spotify.com/embed/track/1ITJTMrS4cx8zdlI7DdSoo?si=-QOTvfhXTf696GVPYYiezQ"
-              depth="0.06"
+              depth={0.06}
             />
           </div>
         </Songs>
