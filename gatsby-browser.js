@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './src/typeface-trenda.css';
 import { Helmet } from 'react-helmet';
 import GlobalStyles from './src/App.styles';
 

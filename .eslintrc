@@ -2,6 +2,8 @@
   "extends": ["airbnb", "plugin:prettier/recommended"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/jsx-one-expression-per-line": ["off"]
-  }
+    "react/jsx-one-expression-per-line": ["off"],
+    "react/forbid-prop-types": [2, { "forbid": ["any", "array" ] }]
+  },
+  "ignorePatterns": "_this_is_virtual_fs_path_/**"
 }

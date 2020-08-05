@@ -10,8 +10,8 @@ const GlobalStyles = createGlobalStyle`
     --color-text: var(--color-white);
     --color-text-subtle: #999999;
 
-    --font-family-display: 'Trenda';
-    --font-family-base: 'Trenda';
+    --font-family-display: 'Trenda', sans-serif;
+    --font-family-base: 'Trenda', sans-serif;
 
     --font-size-xs: 0.563em;
     --font-size-sm: 0.75em;
