@@ -26,17 +26,9 @@ module.exports = {
         theme_color: `#000000`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`,
-        cache_busting_mode: 'none',
       },
     },
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        workboxConfig: {
-          globPatterns: ['**/favicon*'],
-        },
-      },
-    },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-eslint`,
     `gatsby-plugin-styled-components`,
     {
