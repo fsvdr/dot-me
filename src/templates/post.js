@@ -22,8 +22,8 @@ const PostTemplate = ({
         title={`${frontmatter.title} — FSVDR`}
         description={frontmatter.description}
         canonical={frontmatter.path}
-        image={frontmatter.image}
-        imageAlt={frontmatter.imageAlt}
+        image={`${process.env.GATSBY_URL}/.netlify/functions/share-thumbnail?title=${frontmatter.title}&circle=Published ${frontmatter.formattedDate}&badge=No. ${frontmatter.series}`}
+        imageAlt={`Reads: ${frontmatter.title}. Published on ${frontmatter.formattedDate}. Article number ${frontmatter.series}.`}
         og={{
           type: 'article',
           published_time: frontmatter.date,
@@ -101,8 +101,6 @@ export const query = graphql`
         path
         title
         description
-        image
-        imageAlt
         date: date(formatString: "YYYY-MM-DD")
         formattedDate: date(formatString: "MMM DD, YYYY")
         category
@@ -141,8 +139,6 @@ PostTemplate.propTypes = {
         path: PropTypes.string,
         title: PropTypes.string,
         description: PropTypes.string,
-        image: PropTypes.string,
-        imageAlt: PropTypes.string,
         date: PropTypes.string,
         formattedDate: PropTypes.string,
         category: PropTypes.string,

@@ -83,8 +83,10 @@ SEO.defaultProps = {
   canonical: '',
   title: '',
   description: '',
-  image: '',
-  imageAlt: '',
+  image: `${
+    process.env.GATSBY_URL
+  }/.netlify/functions/share-thumbnail?title=I make websites and apps&cirlce=Based in Mexico City ·${new Date().getFullYear()}·&badge=Own it`,
+  imageAlt: 'Reads: I make websites and apps. Year 2020 based in Mexico City. Own it.',
   locale: 'en_US',
   author: '@fsvdr',
   og: { type: 'website' },
