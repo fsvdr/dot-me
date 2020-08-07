@@ -1,0 +1,6 @@
+[build]
+  build = "yarn run build"
+  functions = "functions/"
+
+[[plugins]]
+  package = "netlify-plugin-submit-sitemap"
