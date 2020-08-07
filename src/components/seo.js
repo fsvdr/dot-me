@@ -33,7 +33,7 @@ function SEO({ lang, title, description, canonical, image, imageAlt, locale, aut
       <meta property="og:site_name" content="FSVDR" />
       <meta property="og:title" content={title || site.siteMetadata.title} />
       <meta property="og:description" content={description || site.siteMetadata.description} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={`${site.siteMetadata.siteUrl}${image}`} />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
@@ -54,8 +54,8 @@ function SEO({ lang, title, description, canonical, image, imageAlt, locale, aut
       <meta name="twitter:creator" content={author} />
       <meta name="twitter:title" content={title || site.siteMetadata.title} />
       <meta name="twitter:description" content={description || site.siteMetadata.description} />
-      <meta name="twitter:image" content="" />
-      <meta name="twitter:image_alt" content="" />
+      <meta name="twitter:image" content={`${site.siteMetadata.siteUrl}${image}`} />
+      <meta name="twitter:image_alt" content={imageAlt} />
       <meta name="twitter:url" content={`${site.siteMetadata.siteUrl}${canonical}`} />
     </Helmet>
   );
@@ -83,9 +83,7 @@ SEO.defaultProps = {
   canonical: '',
   title: '',
   description: '',
-  image: `${
-    process.env.GATSBY_URL
-  }/.netlify/functions/share-thumbnail?title=I make websites and apps&cirlce=Based in Mexico City ·${new Date().getFullYear()}·&badge=Own it`,
+  image: `/.netlify/functions/share-thumbnail?title=I make websites and apps&cirlce=Based in Mexico City ·${new Date().getFullYear()}·&badge=Own it`,
   imageAlt: 'Reads: I make websites and apps. Year 2020 based in Mexico City. Own it.',
   locale: 'en_US',
   author: '@fsvdr',

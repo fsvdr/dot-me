@@ -22,7 +22,7 @@ const PostTemplate = ({
         title={`${frontmatter.title} — FSVDR`}
         description={frontmatter.description}
         canonical={frontmatter.path}
-        image={`${process.env.GATSBY_URL}/.netlify/functions/share-thumbnail?title=${frontmatter.title}&circle=Published ${frontmatter.formattedDate}&badge=No. ${frontmatter.series}`}
+        image={`/.netlify/functions/share-thumbnail?title=${frontmatter.title}&circle=Published ${frontmatter.formattedDate}&badge=No. ${frontmatter.series}`}
         imageAlt={`Reads: ${frontmatter.title}. Published on ${frontmatter.formattedDate}. Article number ${frontmatter.series}.`}
         og={{
           type: 'article',
