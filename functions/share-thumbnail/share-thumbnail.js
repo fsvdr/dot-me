@@ -30,6 +30,8 @@ const getThumbnail = async url => {
 
   cache.set(url, dataURL);
 
+  await browser.close();
+
   return dataURL;
 };
 
