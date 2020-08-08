@@ -34,15 +34,15 @@ const getThumbnail = async url => {
   return dataURL;
 };
 
-exports.handler = async (event, context, callback) => {
+exports.handler = async event => {
   const qs = new URLSearchParams(event.queryStringParameters);
   const url = `${isDevelopment ? 'http://localhost:8000' : process.env.URL}/share-thumbnail?${qs.toString()}`;
 
   const thumbnail = await getThumbnail(url);
 
-  return callback(null, {
+  return {
     isBase64Encoded: true,
     statusCode: 200,
     body: thumbnail,
-  });
+  };
 };

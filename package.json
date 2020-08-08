@@ -20,6 +20,7 @@
     "gatsby-transformer-remark": "^2.8.27",
     "gatsby-transformer-sharp": "^2.5.12",
     "horizon-theme-vscode": "jolaleye/horizon-theme-vscode",
+    "netlify-lambda": "^2.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -51,7 +52,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "postinstall": "netlify-lambda install",
     "develop": "gatsby develop -H 0.0.0.0",
     "lint:js": "eslint --ignore-path .gitignore .",
     "lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore",
