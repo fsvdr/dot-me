@@ -103,6 +103,13 @@ export const Body = styled.div`
     padding: 2px 8px;
     border-radius: 4px;
   }
+
+  & figcaption {
+    font-size: var(--font-size-sm);
+    text-align: right;
+    margin-block-start: 1rem;
+    max-width: 800px;
+  }
 `;
 
 export const Aside = styled.aside`

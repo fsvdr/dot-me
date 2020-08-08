@@ -46,6 +46,17 @@ module.exports = {
               },
             },
           },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+              showCaptions: true,
+              wrapperStyle: `
+                margin-block-start: 4rem;
+                margin-block-end: 4rem;
+              `,
+            },
+          },
         ],
       },
     },
