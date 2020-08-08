@@ -27,18 +27,18 @@ function SEO({ lang, title, description, canonical, image, imageAlt, locale, aut
 
       <meta name="description" content={description || site.siteMetadata.description} />
 
-      <link rel="canonical" href={`${site.siteMetadata.siteUrl}${canonical}`} />
+      <link rel="canonical" href={`https://dreamy-cray-028ea3.netlify.app${canonical}`} />
 
       <meta property="og:type" content={og.type || 'website'} />
       <meta property="og:site_name" content="FSVDR" />
       <meta property="og:title" content={title || site.siteMetadata.title} />
       <meta property="og:description" content={description || site.siteMetadata.description} />
-      <meta property="og:image" content={`${site.siteMetadata.siteUrl}${image}`} />
+      <meta property="og:image" content={`https://dreamy-cray-028ea3.netlify.app${image}`} />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={imageAlt} />
-      <meta property="og:url" content={`${site.siteMetadata.siteUrl}${canonical}`} />
+      <meta property="og:url" content={`https://dreamy-cray-028ea3.netlify.app${canonical}`} />
       <meta property="og:locale" content={locale} />
       {locale === 'en_US' && <meta property="og:locale:alternate" content="es_MX" />}
       {locale === 'es_MX' && <meta property="og:locale:alternate" content="en_US" />}
@@ -54,9 +54,9 @@ function SEO({ lang, title, description, canonical, image, imageAlt, locale, aut
       <meta name="twitter:creator" content={author} />
       <meta name="twitter:title" content={title || site.siteMetadata.title} />
       <meta name="twitter:description" content={description || site.siteMetadata.description} />
-      <meta name="twitter:image" content={`${site.siteMetadata.siteUrl}${image}`} />
+      <meta name="twitter:image" content={`https://dreamy-cray-028ea3.netlify.app${image}`} />
       <meta name="twitter:image_alt" content={imageAlt} />
-      <meta name="twitter:url" content={`${site.siteMetadata.siteUrl}${canonical}`} />
+      <meta name="twitter:url" content={`https://dreamy-cray-028ea3.netlify.app${canonical}`} />
     </Helmet>
   );
 }
@@ -78,12 +78,16 @@ SEO.propTypes = {
   }),
 };
 
+const thumbnailParams = new URLSearchParams(
+  `title=I make websites and apps&circle=Based in Mexico City ·${new Date().getFullYear()}·&badge=Own it`
+);
+
 SEO.defaultProps = {
   lang: 'en',
   canonical: '',
   title: '',
   description: '',
-  image: `/.netlify/functions/share-thumbnail?title=I make websites and apps&cirlce=Based in Mexico City ·${new Date().getFullYear()}·&badge=Own it`,
+  image: `/.netlify/functions/share-thumbnail?${thumbnailParams.toString()}`,
   imageAlt: 'Reads: I make websites and apps. Year 2020 based in Mexico City. Own it.',
   locale: 'en_US',
   author: '@fsvdr',

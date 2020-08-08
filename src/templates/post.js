@@ -16,13 +16,17 @@ const PostTemplate = ({
     fsvdr: avatar,
   },
 }) => {
+  const thumbnailParams = new URLSearchParams(
+    `title=${frontmatter.title}&circle=Published ${frontmatter.formattedDate}&badge=No. ${frontmatter.series}`
+  );
+
   return (
     <Layout>
       <SEO
         title={`${frontmatter.title} — FSVDR`}
         description={frontmatter.description}
         canonical={frontmatter.path}
-        image={`/.netlify/functions/share-thumbnail?title=${frontmatter.title}&circle=Published ${frontmatter.formattedDate}&badge=No. ${frontmatter.series}`}
+        image={`/.netlify/functions/share-thumbnail?${thumbnailParams.toString()}`}
         imageAlt={`Reads: ${frontmatter.title}. Published on ${frontmatter.formattedDate}. Article number ${frontmatter.series}.`}
         og={{
           type: 'article',

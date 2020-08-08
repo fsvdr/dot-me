@@ -39,7 +39,6 @@ export const Canvas = styled.section`
 
 export const Wordmark = styled.abbr`
   font-weight: var(--font-weight-black);
-  font-size: var(--font-size-sm);
   text-transform: uppercase;
   text-decoration: none;
 `;

@@ -7,7 +7,6 @@ const cache = new Map();
 const getThumbnail = async url => {
   const cachedThumbnail = cache.get(url);
 
-  console.log('[CACHED]', cache.has(url));
   if (cachedThumbnail) return cachedThumbnail;
 
   // chrome-aws-lambda does not play well on local development so we better
@@ -25,7 +24,7 @@ const getThumbnail = async url => {
   await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1.5 });
   await page.goto(url);
 
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  await new Promise(resolve => setTimeout(resolve, 1500));
   const buffer = await page.screenshot({ type: 'png' });
   const dataURL = buffer.toString('base64');
 
@@ -34,7 +33,8 @@ const getThumbnail = async url => {
   return dataURL;
 };
 
-exports.handler = async event => {
+exports.handler = async (event, context) => {
+  context.callbackWaitsForEmptyEventLoop = false;
   const qs = new URLSearchParams(event.queryStringParameters);
   const url = `${isDevelopment ? 'http://localhost:8000' : process.env.URL}/share-thumbnail?${qs.toString()}`;
 
