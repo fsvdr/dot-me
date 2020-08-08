@@ -1,7 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
-
-const GlobalStyles = createGlobalStyle`
-  :root {
+:root {
     --color-black: #000000;
     --color-white: #ffffff;
     --color-red: #FF4A4A;
@@ -24,8 +21,8 @@ const GlobalStyles = createGlobalStyle`
     --font-weight-regular: 400;
     --font-weight-black: 800;
 
-    --z-index-site-nav-links: 5,
-    --z-index-site-nav: 0
+    --z-index-site-nav-links: 5;
+    --z-index-site-nav: 0;
   }
 
   html,
@@ -229,6 +226,3 @@ const GlobalStyles = createGlobalStyle`
   small {
     font-size: var(--font-size-sm);
   }
-`;
-
-export default GlobalStyles;

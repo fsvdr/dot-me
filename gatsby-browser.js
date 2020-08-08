@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Helmet } from 'react-helmet';
-import GlobalStyles from './src/App.styles';
+import './src/styles/global.css';
 
 // eslint-disable-next-line import/prefer-default-export
 export const wrapRootElement = ({ element }) => {
   return (
     <>
-      <GlobalStyles />
-
       <Helmet>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
 
