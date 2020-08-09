@@ -68,7 +68,7 @@ const IndexPage = ({ data, location }) => {
             </Title>
 
             <p>Website branding and front end implementation</p>
-            <small>/ react / gatsby / styled-components / paypal-api /</small>
+            <small>/ javascript es6 / itcss / bem / php</small>
           </Project>
 
           <Project>
