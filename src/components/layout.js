@@ -23,6 +23,10 @@ export const Wordmark = styled.abbr`
     padding-block-end: 0.8rem;
     transform: rotate(180deg);
   }
+
+  @media screen and (min-width: 1600px) {
+    left: calc((100vw - 1600px) / 2);
+  }
 `;
 
 const Layout = ({ children }) => (
