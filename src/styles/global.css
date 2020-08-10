@@ -191,6 +191,7 @@
     -moz-osx-font-smoothing: grayscale; /* [5] */
     font-smoothing: antialiased; /* stylelint-disable-line */
     background-color: var(--color-black);
+    overflow: hidden;
   }
 
   [hidden] {

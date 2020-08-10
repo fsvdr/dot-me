@@ -11,21 +11,29 @@ import GhostText from '../styles/ghost-text';
 const ContactSection = styled(Section)`
   padding-block-start: 6rem;
   padding-block-end: 6rem;
+  overflow: unset;
 
-  & > ${Title} {
-    font-size: min(12vw, var(--font-size-xl));
+  & .wrapper {
+    position: relative;
+    width: 100%;
+
+    & > ${Title} {
+      font-size: min(12vw, var(--font-size-xl));
+    }
   }
 
   @media screen and (min-width: 768px) {
     padding-block-start: 8rem;
+    padding-block-end: 10rem;
   }
 `;
 
 const Figure = styled.div`
   position: absolute;
   top: 20%;
-  right: 0;
+  right: -2vw;
   inline-size: max(50vw, 26rem);
+  max-inline-size: 46rem;
   z-index: -1;
   opacity: 0.6;
 `;
@@ -76,29 +84,31 @@ const Contact = () => {
 
   return (
     <ContactSection ref={elementRef} id="contact">
-      <Title as="h2" size="xl">
-        <SectionAnchor />
-        Got a project? <br />
-        Get in touch! <br />
-        No commitments. <br />
-        No hidden fees. <br />
-        All chill.
-      </Title>
+      <div className="wrapper">
+        <Title as="h2" size="xl">
+          <SectionAnchor />
+          Got a project? <br />
+          Get in touch! <br />
+          No commitments. <br />
+          No hidden fees. <br />
+          All chill.
+        </Title>
 
-      <Email>
-        <GhostText>dev@fsvdr.me</GhostText>
-        <p>dev@fsvdr.me</p>
-        <GhostText>dev@fsvdr.me</GhostText>
-      </Email>
+        <Email>
+          <GhostText>dev@fsvdr.me</GhostText>
+          <p>dev@fsvdr.me</p>
+          <GhostText>dev@fsvdr.me</GhostText>
+        </Email>
 
-      <p>
-        I’m currently available for freelance projects — and even if you just want to talk about business ideas, tech or
-        life itself drop me a line!
-      </p>
+        <p>
+          I’m currently available for freelance projects — and even if you just want to talk about business ideas, tech
+          or life itself drop me a line!
+        </p>
 
-      <Figure as={motion.div} style={{ y }}>
-        <Image image={data.computer} />
-      </Figure>
+        <Figure as={motion.div} style={{ y }}>
+          <Image image={data.computer} />
+        </Figure>
+      </div>
     </ContactSection>
   );
 };
