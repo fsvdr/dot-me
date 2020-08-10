@@ -31,6 +31,11 @@ const StyledFooter = styled.footer`
     padding-inline-start: 4.4rem;
     padding-inline-end: 4.4rem;
   }
+
+  @media screen and (min-width: 1600px) {
+    padding-inline-start: calc((100vw - 1600px) / 2 + 7vw);
+    padding-inline-end: calc((100vw - 1600px) / 2 + 7vw);
+  }
 `;
 
 const Footer = () => (
