@@ -14,7 +14,7 @@ export const wrapRootElement = ({ element }) => {
         <link rel="preload" href="fonts/Trenda/typeface-trenda.css" as="style" />
         <link rel="stylesheet" href="fonts/Trenda/typeface-trenda.css" media="print" onLoad="this.media='all'" />
 
-        <script async defer data-domain="fsvdr.me" src="https://plausible.io/js/plausible.js" />
+        <script async defer data-domain="fsvdr.me" src="https://stats.fsvdr.me/js/index.js" />
       </Helmet>
 
       {element}
