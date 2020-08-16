@@ -110,6 +110,14 @@ export const Body = styled.div`
     margin-block-start: 1rem;
     max-width: 800px;
   }
+
+  & li {
+    margin-block-end: 0.8rem;
+  }
+
+  & li::marker {
+    color: var(--color-accent);
+  }
 `;
 
 export const Aside = styled.aside`

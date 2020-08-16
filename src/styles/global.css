@@ -117,13 +117,11 @@
 
   /*
     1) Make list item markers appear inside content flow
-    2) Reset list item marker type to modify them later
   */
   dl,
   ol,
   ul {
     list-style-position: inside; /* [1] */
-    list-style-type: initial; /* [2] */
   }
 
   blockquote,

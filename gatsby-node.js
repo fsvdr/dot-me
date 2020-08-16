@@ -24,7 +24,6 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const posts = result.data.allMarkdownRemark.edges.filter(({ node }) => !node.frontmatter.standalone);
 
-  console.log(JSON.stringify(posts));
   posts.forEach(({ node }, index) => {
     const hasPrevious = index > 0;
     const hasNext = index + 1 < posts.length;
