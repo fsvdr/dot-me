@@ -44,7 +44,7 @@ const PostTemplate = ({
             <time dateTime={frontmatter.date}>
               <CircleText
                 radius={3}
-                badge={`No. ${frontmatter.series}`}
+                badge={frontmatter.series ? `No. ${frontmatter.series}` : ''}
                 text={`Published ${frontmatter.formattedDate}`}
               />
             </time>
@@ -76,19 +76,19 @@ const PostTemplate = ({
           </p>
 
           <nav>
-            {!previous ? null : (
+            {frontmatter.standalone || !previous ? null : (
               <Link to={previous.frontmatter.path} rel="prev">
                 <span>Previous one:</span>
                 {previous.frontmatter.title}
               </Link>
             )}
-            {!next ? null : (
+            {frontmatter.standalone || !next ? null : (
               <Link to={next.frontmatter.path} rel="next">
                 <span>Next up:</span>
                 {next.frontmatter.title}
               </Link>
             )}
-            <Link to="/blog">See all posts</Link>
+            {frontmatter.standalone ? null : <Link to="/blog">See all posts</Link>}
           </nav>
         </Aside>
       </Article>
@@ -110,6 +110,7 @@ export const query = graphql`
         category
         tags
         series
+        standalone
       }
     }
     previous: markdownRemark(frontmatter: { path: { eq: $previous } }) {
@@ -148,6 +149,7 @@ PostTemplate.propTypes = {
         category: PropTypes.string,
         tags: PropTypes.arrayOf(PropTypes.string),
         series: PropTypes.number,
+        standalone: PropTypes.bool,
       }),
     }).isRequired,
     previous: PropTypes.shape({

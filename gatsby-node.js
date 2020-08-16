@@ -7,11 +7,12 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const result = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: { order: ASC, fields: frontmatter___series }) {
         edges {
           node {
             frontmatter {
               path
+              standalone
             }
           }
         }
@@ -21,19 +22,29 @@ exports.createPages = async ({ actions, graphql }) => {
 
   if (result.errors) console.error(result.errors);
 
-  const pages = result.data.allMarkdownRemark.edges;
+  const posts = result.data.allMarkdownRemark.edges.filter(({ node }) => !node.frontmatter.standalone);
 
-  pages.forEach(({ node }, index) => {
+  console.log(JSON.stringify(posts));
+  posts.forEach(({ node }, index) => {
     const hasPrevious = index > 0;
-    const hasNext = index + 1 < pages.length;
+    const hasNext = index + 1 < posts.length;
 
     createPage({
       path: node.frontmatter.path,
       component: path.resolve('src/templates/post.js'),
       context: {
-        previous: hasPrevious ? pages[index - 1].node.frontmatter.path : '',
-        next: hasNext ? pages[index + 1].node.frontmatter.path : '',
+        previous: hasPrevious ? posts[index - 1].node.frontmatter.path : '',
+        next: hasNext ? posts[index + 1].node.frontmatter.path : '',
       },
+    });
+  });
+
+  const standalone = result.data.allMarkdownRemark.edges.filter(({ node }) => node.frontmatter.standalone);
+
+  standalone.forEach(({ node }) => {
+    createPage({
+      path: node.frontmatter.path,
+      component: path.resolve('src/templates/post.js'),
     });
   });
 };

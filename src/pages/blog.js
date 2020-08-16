@@ -49,7 +49,10 @@ const BlogPage = ({
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___series }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { standalone: { ne: true } } }
+      sort: { order: DESC, fields: frontmatter___series }
+    ) {
       edges {
         node {
           frontmatter {
