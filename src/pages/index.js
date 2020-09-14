@@ -66,18 +66,6 @@ const IndexPage = ({ data, location }) => {
         </Title>
 
         <div>
-          <Project aria-labelledby="moco-comics">
-            <Title as="h3" size="xl" id="moco-comics">
-              <a href="https://moco-comics.com" target="_blank" rel="noopener noreferrer">
-                <GhostText>Moco-Comics</GhostText>
-                <br /> Blog & E-Commerce
-              </a>
-            </Title>
-
-            <p>Website branding and front end implementation</p>
-            <small>/ javascript es6 / itcss / bem / php</small>
-          </Project>
-
           <Project aria-labelledby="dr-saavedra">
             <Title as="h3" size="xl">
               <a href="https://drsaavedra.mx" target="_blank" rel="noopener noreferrer" id="dr-saavedra">
@@ -87,7 +75,21 @@ const IndexPage = ({ data, location }) => {
             </Title>
 
             <p>Digital branding and full stack implementation</p>
-            <small>/ react / gatsby / css-modules /</small>
+            <small aria-label="Technology stack">
+              / gatsby / styled-components / sanity.io / mapbox / google calendar / netlify /
+            </small>
+          </Project>
+
+          <Project aria-labelledby="moco-comics">
+            <Title as="h3" size="xl" id="moco-comics">
+              <a href="https://moco-comics.com" target="_blank" rel="noopener noreferrer">
+                <GhostText>Moco-Comics</GhostText>
+                <br /> Blog & E-Commerce
+              </a>
+            </Title>
+
+            <p>Website branding and front end implementation</p>
+            <small aria-label="Technology stack">/ javascript es6 / itcss / bem / php</small>
           </Project>
         </div>
       </Work>
