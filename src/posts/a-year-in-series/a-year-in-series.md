@@ -88,3 +88,12 @@ standalone: true
 78. Seinfeld S4
 79. Billions S5
 80. Dirty John: Betty Broderick
+81. Seinfeld S5
+82. Seinfeld S6
+83. Seinfeld S7
+84. Stumptown
+85. Seinfeld S8
+86. Seinfeld S9
+87. Biohackers
+88. Shark Tank México S5
+89. Daredevil
