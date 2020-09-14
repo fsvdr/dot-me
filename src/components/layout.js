@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import SocialsNav from './socials-nav';
 import Footer from './footer';
+import useFOITStrategy from '../hooks/useFOITStrategy';
 
 export const Wordmark = styled.abbr`
   position: absolute;
@@ -29,18 +30,22 @@ export const Wordmark = styled.abbr`
   }
 `;
 
-const Layout = ({ children }) => (
-  <>
-    {children}
+const Layout = ({ children }) => {
+  useFOITStrategy();
 
-    <Link to="/" aria-label="Home">
-      <Wordmark title="Fernando Saavedra">fsvdr</Wordmark>
-    </Link>
+  return (
+    <>
+      {children}
 
-    <Footer />
-    <SocialsNav />
-  </>
-);
+      <Link to="/" aria-label="Home">
+        <Wordmark title="Fernando Saavedra">fsvdr</Wordmark>
+      </Link>
+
+      <Footer />
+      <SocialsNav />
+    </>
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

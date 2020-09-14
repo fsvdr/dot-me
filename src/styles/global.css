@@ -179,7 +179,7 @@
     min-height: 100vh; /* [1] */
     min-height: -webkit-fill-available; /* [2] */
     height: auto;
-    font-family: var(--font-family-base);
+    font-family: Verdana, Helvetica, Arial, sans-serif;
     font-size: 1.125em;
     font-weight: var(--font-weight-regular);
     line-height: 1.6;
@@ -190,6 +190,10 @@
     font-smoothing: antialiased; /* stylelint-disable-line */
     background-color: var(--color-black);
     overflow: hidden;
+  }
+
+  body.has-custom-font {
+    font-family: var(--font-family-base);
   }
 
   [hidden] {

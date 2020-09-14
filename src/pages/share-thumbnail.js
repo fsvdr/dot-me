@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Title from '../styles/title';
 import CircleText from '../components/circle-text';
+import useFOITStrategy from '../hooks/useFOITStrategy';
 
 export const Canvas = styled.section`
   display: flex;
@@ -44,6 +45,7 @@ export const Wordmark = styled.abbr`
 `;
 
 const ShareThumbnailPage = ({ location }) => {
+  useFOITStrategy();
   if (!location.href) return null;
 
   const url = new URL(location.href);
