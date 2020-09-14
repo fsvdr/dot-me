@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Wattermellon';
+  src: url('https://fsvdr-fonts.sfo2.digitaloceanspaces.com/wattermellon/Wattermellon.otf') format('opentype'),
+    url('https://fsvdr-fonts.sfo2.digitaloceanspaces.com/wattermellon/Wattermellon.woff') format('woff'),
+    url('https://fsvdr-fonts.sfo2.digitaloceanspaces.com/wattermellon/Wattermellon.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}

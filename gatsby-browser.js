@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import './src/styles/global.css';
 import './src/styles/typeface-trenda.css';
+import './src/styles/typeface-wattermellon.css';
 
 // eslint-disable-next-line import/prefer-default-export
 export const wrapRootElement = ({ element }) => {

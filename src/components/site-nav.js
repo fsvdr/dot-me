@@ -40,8 +40,10 @@ const SiteLink = styled(Link)`
   }
 
   & span {
-    font-weight: var(--font-weight-black);
-    text-transform: uppercase;
+    font-family: var(--font-family-display);
+    font-size: 3.157rem;
+    letter-spacing: 1px;
+    line-height: 120%;
   }
 `;
 
