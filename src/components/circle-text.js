@@ -43,7 +43,7 @@ const CircleText = ({ radius, text, badge }) => {
   const characters = text.split('');
 
   return (
-    <Container radius={radius}>
+    <Container radius={radius} aria-label={`${badge} ${text}`}>
       {characters.map((c, i) => (
         <Character length={characters.length} index={i} key={i}>
           {c}

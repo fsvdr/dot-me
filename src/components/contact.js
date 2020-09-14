@@ -38,16 +38,17 @@ const Figure = styled.div`
   opacity: 0.6;
 `;
 
-const Email = styled.div`
+const Email = styled.address`
   display: flex;
   flex-flow: column nowrap;
   font-size: var(--font-size-lg);
+  font-style: normal;
   font-weight: var(--font-weight-black);
   text-transform: uppercase;
   margin-block-start: 8rem;
   margin-block-end: 8rem;
 
-  & p {
+  & .highlight {
     margin-block-end: 0;
     margin-inline-start: 4rem;
   }
@@ -57,7 +58,7 @@ const Email = styled.div`
   }
 `;
 
-const Contact = () => {
+const Contact = React.forwardRef((props, focusRef) => {
   const elementRef = useRef(null);
   const [elementTop, setElementTop] = useState(0);
   const { scrollY } = useViewportScroll();
@@ -85,7 +86,7 @@ const Contact = () => {
   return (
     <ContactSection ref={elementRef} id="contact">
       <div className="wrapper">
-        <Title as="h2" size="xl">
+        <Title as="h2" size="xl" ref={focusRef} tabIndex={0}>
           <SectionAnchor />
           Got a project? <br />
           Get in touch! <br />
@@ -94,10 +95,10 @@ const Contact = () => {
           All chill.
         </Title>
 
-        <Email>
-          <GhostText>dev@fsvdr.me</GhostText>
-          <p>dev@fsvdr.me</p>
-          <GhostText>dev@fsvdr.me</GhostText>
+        <Email aria-label="Email address">
+          <GhostText aria-hidden="true">dev@fsvdr.me</GhostText>
+          <span className="highlight">dev@fsvdr.me</span>
+          <GhostText aria-hidden="true">dev@fsvdr.me</GhostText>
         </Email>
 
         <p>
@@ -111,6 +112,6 @@ const Contact = () => {
       </div>
     </ContactSection>
   );
-};
+});
 
 export default Contact;

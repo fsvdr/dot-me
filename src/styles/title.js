@@ -22,6 +22,10 @@ const Title = styled.h1`
   line-height: 120%;
   -webkit-text-stroke: 2px var(--color-white);
   margin-block-end: 4rem;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export default Title;

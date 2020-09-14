@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -17,8 +17,15 @@ import Section, { SectionAnchor } from '../styles/section';
 import SEO from '../components/seo';
 
 const IndexPage = ({ data, location }) => {
+  const focusRef = useRef();
+  const contactRef = useRef();
   const { isMobile } = useViewportSize();
   const { containerRef, y } = useParallax(isMobile ? PARALLAX_DEPTH.FRONT : PARALLAX_DEPTH.BACKGROUND);
+
+  useEffect(() => {
+    if (!focusRef.current) return;
+    focusRef.current.focus();
+  }, []);
 
   return (
     <Layout ref={containerRef}>
@@ -26,7 +33,7 @@ const IndexPage = ({ data, location }) => {
 
       <Section>
         <Hero>
-          <Title size="big">
+          <Title size="big" tabIndex={0} ref={focusRef}>
             Hey now! My name is Fernando, I’m a <GhostText>front end developer</GhostText> based in Mexico City.
           </Title>
 
@@ -39,13 +46,13 @@ const IndexPage = ({ data, location }) => {
         </Hero>
 
         <Lead>
-          I make websites and apps{' '}
-          <span className="subtle">that express uniqueness through design, interactivity and accessibility.</span>
+          I make websites and apps
+          <span className="subtle"> that express uniqueness through design, interactivity and accessibility.</span>
         </Lead>
 
         <Availability>Available for freelance</Availability>
 
-        <SiteNav route={location.pathname.slice(1)} />
+        <SiteNav route={location.pathname.slice(1)} focusContact={() => contactRef.current.focus()} />
       </Section>
 
       <Work>
@@ -59,8 +66,8 @@ const IndexPage = ({ data, location }) => {
         </Title>
 
         <div>
-          <Project>
-            <Title as="h3" size="xl">
+          <Project aria-labelledby="moco-comics">
+            <Title as="h3" size="xl" id="moco-comics">
               <a href="https://moco-comics.com" target="_blank" rel="noopener noreferrer">
                 <GhostText>Moco-Comics</GhostText>
                 <br /> Blog & E-Commerce
@@ -71,9 +78,9 @@ const IndexPage = ({ data, location }) => {
             <small>/ javascript es6 / itcss / bem / php</small>
           </Project>
 
-          <Project>
+          <Project aria-labelledby="dr-saavedra">
             <Title as="h3" size="xl">
-              <a href="https://drsaavedra.mx" target="_blank" rel="noopener noreferrer">
+              <a href="https://drsaavedra.mx" target="_blank" rel="noopener noreferrer" id="dr-saavedra">
                 <GhostText>Dr. Saavedra</GhostText>
                 <br /> Landing Page & Blog
               </a>
@@ -85,7 +92,7 @@ const IndexPage = ({ data, location }) => {
         </div>
       </Work>
 
-      <Contact />
+      <Contact ref={contactRef} />
     </Layout>
   );
 };

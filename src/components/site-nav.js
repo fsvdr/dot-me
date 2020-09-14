@@ -47,7 +47,7 @@ const SiteLink = styled(Link)`
   }
 `;
 
-const SiteNav = ({ route, showContact }) => {
+const SiteNav = ({ route, showContact, focusContact }) => {
   return (
     <Nav aria-label="Site navigation">
       <ul>
@@ -76,7 +76,7 @@ const SiteNav = ({ route, showContact }) => {
 
         {showContact && (
           <li>
-            <SiteLink as="a" href="#contact" internal="true">
+            <SiteLink as="a" href="#contact" internal="true" onClick={focusContact}>
               <small>How to</small>
               <span>Contact</span>
             </SiteLink>
@@ -90,11 +90,13 @@ const SiteNav = ({ route, showContact }) => {
 SiteNav.propTypes = {
   route: PropTypes.oneOf(['', 'about', 'blog']),
   showContact: PropTypes.bool,
+  focusContact: PropTypes.func,
 };
 
 SiteNav.defaultProps = {
   route: '',
   showContact: true,
+  focusContact: () => {},
 };
 
 export default SiteNav;

@@ -39,9 +39,9 @@ const StyledFooter = styled.footer`
 `;
 
 const Footer = () => (
-  <StyledFooter>
+  <StyledFooter aria-label="Footer">
     <small>
-      Be nice y&apos;all{' '}
+      Be nice y&apos;all
       <span role="img" aria-label="peace sign">
         ✌
       </span>

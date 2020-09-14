@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Layout from '../components/layout';
@@ -15,12 +15,19 @@ const BlogPage = ({
   },
   location,
 }) => {
+  const focusRef = useRef();
+
+  useEffect(() => {
+    if (!focusRef.current) return;
+    focusRef.current.focus();
+  }, []);
+
   return (
     <Layout>
       <SEO title="Blog — FSVDR" canonical={location.pathname} />
 
       <Section>
-        <Title size="big">
+        <Title size="big" tabIndex={0} ref={focusRef}>
           If a post is <GhostText>published</GhostText> but no one is there to <GhostText>read</GhostText> it, does it
           exist? <br /> Well yes.
         </Title>
@@ -29,9 +36,11 @@ const BlogPage = ({
 
         <Posts>
           {posts.map(({ node: { frontmatter: { path, title, series } } }) => (
-            <Post key={path}>
+            <Post key={path} aria-label={`Blog post #${series}: ${title}`}>
               <h2>
-                <Link to={path}>{title}</Link>
+                <Link to={path} aria-label={`Blog post #${series}: ${title}`}>
+                  {title}
+                </Link>
               </h2>
 
               <span>{`No. ${series}`}</span>

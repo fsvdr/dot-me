@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import Layout from '../components/layout';
@@ -16,9 +16,15 @@ const PostTemplate = ({
     fsvdr: avatar,
   },
 }) => {
+  const focusRef = useRef();
   const thumbnailParams = new URLSearchParams(
     `title=${frontmatter.title}&circle=Published ${frontmatter.formattedDate}&badge=No. ${frontmatter.series}`
   );
+
+  useEffect(() => {
+    if (!focusRef.current) return;
+    focusRef.current.focus();
+  }, []);
 
   return (
     <Layout>
@@ -36,9 +42,9 @@ const PostTemplate = ({
         }}
       />
 
-      <Article role="main">
+      <Article role="main" aria-label={frontmatter.title}>
         <Header>
-          <Title size="big">
+          <Title size="big" tabIndex={0} ref={focusRef}>
             {frontmatter.title}
 
             <time dateTime={frontmatter.date}>
@@ -54,40 +60,48 @@ const PostTemplate = ({
         </Header>
 
         <Author>
-          <Image
-            image={avatar}
-            alt="Fernando sits in front of his computer wearing sunglasses as if cooler than he actually is"
-          />
+          <Image image={avatar} alt="" focusable="false" aria-hidden="true" />
 
           <div>
-            <h3 className="author-name">
+            <address className="author-name" aria-label="Author">
               <abbr title="Fernando Saavedra">fsvdr</abbr>
-            </h3>
+            </address>
             <p className="time-to-read">{`${timeToRead} minute${timeToRead > 1 ? 's' : ''} read`}</p>
           </div>
         </Author>
 
         <Body dangerouslySetInnerHTML={{ __html: html }} />
 
-        <Aside>
+        <Aside aria-label="About the author">
           <p>Hey there, my name Fernando, I&apos;m a front end developer based in Mexico City.</p>
-          <p>
-            You can read more about me and what I do <Link to="/">here</Link>.
-          </p>
 
-          <nav>
+          <div aria-labelledby="what where">
+            <p id="what">You can read more about me and what I do </p>
+
+            <Link to="/" id="where">
+              here.
+            </Link>
+          </div>
+
+          <nav aria-label="Blog pagination">
             {frontmatter.standalone || !previous ? null : (
-              <Link to={previous.frontmatter.path} rel="prev">
+              <Link
+                to={previous.frontmatter.path}
+                rel="prev"
+                aria-label={`Previous post: ${previous.frontmatter.title}`}
+              >
                 <span>Previous one:</span>
                 {previous.frontmatter.title}
               </Link>
             )}
+
             {frontmatter.standalone || !next ? null : (
-              <Link to={next.frontmatter.path} rel="next">
+              <Link to={next.frontmatter.path} rel="next" aria-label={`Next post: ${next.frontmatter.title}`}>
                 <span>Next up:</span>
                 {next.frontmatter.title}
               </Link>
             )}
+
             {frontmatter.standalone ? null : <Link to="/blog">See all posts</Link>}
           </nav>
         </Aside>

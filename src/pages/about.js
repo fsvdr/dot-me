@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -17,14 +17,21 @@ import { SectionAnchor } from '../styles/section';
 import SpotifySong from '../components/spotify-song';
 
 const AboutPage = ({ data, location }) => {
+  const contactRef = useRef();
+  const focusRef = useRef();
   const { containerRef, y } = useParallax(PARALLAX_DEPTH.BACKGROUND);
+
+  useEffect(() => {
+    if (!focusRef.current) return;
+    focusRef.current.focus();
+  }, []);
 
   return (
     <Layout ref={containerRef}>
       <SEO title="About me — FSVDR" canonical={location.pathname} />
 
       <Hero>
-        <Title size="big">
+        <Title size="big" tabIndex={0} ref={focusRef}>
           You can&apos;t fit it all in a <GhostText>CV</GhostText>. So let&apos;s roll the <GhostText>about </GhostText>
           page.
         </Title>
@@ -41,7 +48,7 @@ const AboutPage = ({ data, location }) => {
           Twenty-four year old front end developer with a<s>n obsession</s> passion for design, productivity and coffee.
         </Lead>
 
-        <SiteNav route="about" />
+        <SiteNav route="about" focusContact={() => contactRef.current.focus()} />
       </Hero>
 
       <Motivation>
@@ -104,8 +111,8 @@ const AboutPage = ({ data, location }) => {
           fan of rainy days and cooking videos.
         </Lead>
 
-        <Songs>
-          <Title as="h3">
+        <Songs as="div">
+          <Title as="h2">
             <SectionAnchor />
             <GhostText>3 songs</GhostText> <br /> playing on repeat
           </Title>
@@ -132,7 +139,7 @@ const AboutPage = ({ data, location }) => {
         </Songs>
       </Hobbies>
 
-      <Contact />
+      <Contact ref={contactRef} />
     </Layout>
   );
 };

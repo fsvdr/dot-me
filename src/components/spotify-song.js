@@ -38,6 +38,7 @@ const SpotifySong = ({ title, uri, depth }) => {
           allowtransparency="true"
           allow="encrypted-media"
           loading="lazy"
+          aria-label={`Play ${title} on Spotify`}
         />
       </motion.div>
     </Container>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const StyledSocialsNav = styled.nav`
+export const StyledSocialsNav = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -47,7 +47,7 @@ export const StyledSocialsNav = styled.nav`
 
 const SocialsNav = () => (
   <StyledSocialsNav>
-    <nav aria-label="Social networks navigation">
+    <nav aria-label="Social networks">
       <ul>
         <li>
           <a href="https://twitter.com/fsvdr">Twitter</a>

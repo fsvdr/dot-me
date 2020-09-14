@@ -126,16 +126,22 @@ export const Aside = styled.aside`
   margin-block-end: 4rem;
   border-block-start: 1px dotted var(--color-text-subtle);
 
-  & > p {
+  & p {
+    display: inline;
     color: var(--color-text-subtle);
     margin-block-end: 0.8rem;
+  }
 
-    & a {
-      color: var(--color-white);
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      text-decoration-color: var(--color-white);
-    }
+  & div {
+    margin-block-start: 1.6rem;
+  }
+
+  & div a {
+    display: inline-block;
+    color: var(--color-white);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--color-white);
   }
 
   & nav {
@@ -176,6 +182,8 @@ export const Author = styled.div`
   }
 
   & .author-name {
+    font-style: normal;
+    font-weight: var(--font-weight-black);
     text-transform: uppercase;
     font-size: var(--font-size-sm);
   }
