@@ -95,6 +95,10 @@ export const Body = styled.div`
     color: #ffffff;
   }
 
+  & pre {
+    margin-block-end: 2.4rem;
+  }
+
   & code {
     font-family: monospace;
   }
@@ -109,6 +113,17 @@ export const Body = styled.div`
     text-align: right;
     margin-block-start: 1rem;
     max-width: 800px;
+  }
+
+  & blockquote {
+    font-style: italic;
+    padding: 0.8rem 1.6rem;
+    border-inline-start: 4px solid var(--color-accent);
+    margin-block-end: 1.6rem;
+
+    & p {
+      margin-block-end: 0;
+    }
   }
 
   & li {

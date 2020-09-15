@@ -1,6 +1,6 @@
 ---
 path: /a-year-in-series
-title: "A year in TV series"
+title: 'A year in TV series'
 description: I like to keep track of what I watch, don't @ me
 date: 2020-01-01
 category: Miscellaneous
@@ -51,7 +51,7 @@ standalone: true
 41. Upload
 42. Tales from the Loop
 43. Little Fires Everywhere
-44. Modern Family 
+44. Modern Family
 45. Modern Family S2
 46. The Walking Dead S9
 47. Modern Family S3
@@ -62,7 +62,7 @@ standalone: true
 52. Killing Eve S2
 53. Billions S1
 54. Billions S2
-55. Historia de un crimen: La Búsqueda 
+55. Historia de un crimen: La Búsqueda
 56. Modern Family S6
 57. Modern Family S7
 58. The Sinner S3
@@ -73,14 +73,14 @@ standalone: true
 63. El pantano
 64. Modern Family S9
 65. Shark Tank México S4
-66. Unsolved mysteries 
+66. Unsolved mysteries
 67. Oscuro Deseo
 68. Dark S3
 69. Billions S4
 70. Modern Family S10
-71. La Jauria 
-72. Legion S3 
-73. Seinfeld 
+71. La Jauria
+72. Legion S3
+73. Seinfeld
 74. Seinfeld S2
 75. Seinfeld S3
 76. Killing Eve S3

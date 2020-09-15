@@ -48,7 +48,7 @@ Aren't we getting duplicated travels here? Isn't A to B the same as B to A? Well
 
 ## The Code Dammit!
 
-Ok so the way we interact with this API is through a `js ·· GET` HTTP request to `js ·· https://api.mapbox.com/directions-matrix/v1/{profile}/{coordinates}`.
+Ok so the way we interact with this API is through a `js ·· GET` HTTP request to `html ·· https://api.mapbox.com/directions-matrix/v1/{profile}/{coordinates}`.
 
 Where `profile` is one of:
   * `js ·· mapbox/driving` - if you prefer to drive 🚗
@@ -68,7 +68,7 @@ Another parameter we can pass to our HTTP request is `js ·· annotations` this 
 
 One other parameter you might want to use is `js ·· approaches`. See by default the travel that gets calculated doesn't care about lanes so it could be from either side of the road. Because driving on the wrong side of the lane is considered cheating, we can set its value to `js ·· curb` to indicate that we want to care about arriving on the right side of the road. One important thing to notice is that we need to provide a value for each geographical point so if we want to calculate the travels between three points we would pass `js ·· approaches=curb;curb;curb`.
 
-With all this we have a fine request of the shape: `js ·· https://api.mapbox.com/directions-matrix/v1/mapbox/driving-traffic/{coordinates}?annotations=duration,distance&approaches=curb;curb`. But you know what we're missing? ~~Some tunes for the ride~~ Our access token.
+With all this we have a fine request of the shape: `html ·· https://api.mapbox.com/directions-matrix/v1/mapbox/driving-traffic/{coordinates}?annotations=duration,distance&approaches=curb;curb`. But you know what we're missing? ~~Some tunes for the ride~~ Our access token.
 
 ## Authenticating our request
 
