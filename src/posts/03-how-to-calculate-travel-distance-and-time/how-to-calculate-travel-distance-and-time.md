@@ -1,6 +1,6 @@
 ---
 path: /how-to-calculate-travel-distance-and-time
-title: 'How to calculate driving travel distance and time'
+title: 'How to calculate travel distance and time'
 description: Google Maps. Right? Let's go with Google Maps and call it a day. Cool? NO. Not this time pal, let me show you just how much you're missing out on Mapbox. The cool kid in town.
 date: 2020-09-14
 category: Tutorial
