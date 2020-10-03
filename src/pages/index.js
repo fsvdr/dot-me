@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 import { Hero, HeroImage, Lead, Availability, Work, Project } from '../styles/index.styles';
 import GhostText from '../styles/ghost-text';
 import Title from '../styles/title';
-import Image from '../components/image';
 import Layout from '../components/layout';
 import useParallax, { PARALLAX_DEPTH } from '../hooks/useParallax';
 import useViewportSize from '../hooks/useViewportSize';
@@ -15,6 +14,7 @@ import SiteNav from '../components/site-nav';
 import Contact from '../components/contact';
 import Section, { SectionAnchor } from '../styles/section';
 import SEO from '../components/seo';
+import ImageReveal from '../components/image-reveal';
 
 const IndexPage = ({ data, location }) => {
   const focusRef = useRef();
@@ -38,8 +38,8 @@ const IndexPage = ({ data, location }) => {
           </Title>
 
           <HeroImage as={motion.div} style={{ y }}>
-            <Image
-              image={data.fsvdr}
+            <ImageReveal
+              fluid={data.fsvdr.childImageSharp.fluid}
               alt="Fernando sits with his computer at a table, pretending to be cooler than he actually is"
             />
           </HeroImage>

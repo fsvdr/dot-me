@@ -9,12 +9,12 @@ import Title from '../styles/title';
 import Contact from '../components/contact';
 import GhostText from '../styles/ghost-text';
 import { Hero, HeroImage, Lead, Motivation, Expertise, Services, Hobbies, Songs } from '../styles/about.styles';
-import Image from '../components/image';
 import CircleText from '../components/circle-text';
 import SiteNav from '../components/site-nav';
 import useParallax, { PARALLAX_DEPTH } from '../hooks/useParallax';
 import { SectionAnchor } from '../styles/section';
 import SpotifySong from '../components/spotify-song';
+import ImageReveal from '../components/image-reveal';
 
 const AboutPage = ({ data, location }) => {
   const contactRef = useRef();
@@ -38,7 +38,10 @@ const AboutPage = ({ data, location }) => {
 
         <HeroImage>
           <motion.div style={{ y }}>
-            <Image image={data.working} alt="Fernando sits working on his computer at a desk surrounded by trees" />
+            <ImageReveal
+              fluid={data.working.childImageSharp.fluid}
+              alt="Fernando sits working on his computer at a desk surrounded by trees"
+            />
 
             <CircleText radius={3} text="No you went full instagramy here" />
           </motion.div>
