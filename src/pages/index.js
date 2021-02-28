@@ -34,7 +34,7 @@ const IndexPage = ({ data, location }) => {
       <Section>
         <Hero>
           <Title size="big" tabIndex={0} ref={focusRef}>
-            Hey now! My name is Fernando, I’m a <GhostText>front end developer</GhostText> based in Mexico City.
+            Hey! My name is Fernando, I’m a <GhostText>front end developer</GhostText> based in Mexico City.
           </Title>
 
           <HeroImage as={motion.div} style={{ y }}>
@@ -88,7 +88,7 @@ const IndexPage = ({ data, location }) => {
               </a>
             </Title>
 
-            <p>Website branding and front end implementation</p>
+            <p>Web design and front end implementation</p>
             <small aria-label="Technology stack">/ javascript es6 / itcss / bem / php</small>
           </Project>
         </div>
