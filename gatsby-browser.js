@@ -13,7 +13,8 @@ export const wrapRootElement = ({ element }) => {
       <Helmet>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
 
-        <script async defer data-domain="fsvdr.me" src="https://stats.fsvdr.me/js/index.js" />
+        <script defer data-domain="fsvdr.me" src="https://plausible.io/js/script.js"></script>
+        <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="ZGTSKVXR" defer></script>
       </Helmet>
 
       {element}
