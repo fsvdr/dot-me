@@ -19,7 +19,7 @@
     "gatsby-remark-images": "^3.3.25",
     "gatsby-remark-vscode": "^3.0.1",
     "gatsby-source-filesystem": "^2.3.23",
-    "gatsby-transformer-remark": "^2.8.27",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.5.12",
     "horizon-theme-vscode": "jolaleye/horizon-theme-vscode",
     "netlify-lambda": "^2.0.1",
