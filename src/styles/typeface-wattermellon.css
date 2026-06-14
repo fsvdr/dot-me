@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Wattermellon';
-  src: url('https://102e81b89588dae95fe3fe66184c1b24.r2.cloudflarestorage.com/dot-me/fonts/wattermellon/Wattermellon.otf') format('opentype'),
-    url('https://102e81b89588dae95fe3fe66184c1b24.r2.cloudflarestorage.com/dot-me/fonts/wattermellon/Wattermellon.woff') format('woff'),
-    url('https://102e81b89588dae95fe3fe66184c1b24.r2.cloudflarestorage.com/dot-me/fonts/wattermellon/Wattermellon.ttf') format('truetype');
+  src: url('https://pub-fd7ef24f455244ba96868abce0b6d30a.r2.dev/fonts/wattermellon/Wattermellon.otf') format('opentype'),
+    url('https://pub-fd7ef24f455244ba96868abce0b6d30a.r2.dev/fonts/wattermellon/Wattermellon.woff') format('woff'),
+    url('https://pub-fd7ef24f455244ba96868abce0b6d30a.r2.dev/fonts/wattermellon/Wattermellon.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
   text-rendering: optimizeLegibility;
