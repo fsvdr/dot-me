@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
 
 import remarkReadingTime from './src/plugins/remark-reading-time.mjs';
 import remarkInlineCode from './src/plugins/remark-inline-code.mjs';
@@ -26,8 +27,10 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkReadingTime, remarkInlineCode],
-    rehypePlugins: [rehypeFigureCaptions],
+    processor: unified({
+      remarkPlugins: [remarkReadingTime, remarkInlineCode],
+      rehypePlugins: [rehypeFigureCaptions],
+    }),
     shikiConfig: {
       theme: 'material-theme-palenight',
       wrap: true,
