@@ -3,7 +3,7 @@ interface Props {
   as?: string;
   size?: 'big' | 'md' | 'xl';
   class?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 const { as: Tag = 'h1', size, class: className, ...rest } = Astro.props;
