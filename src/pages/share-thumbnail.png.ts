@@ -1,5 +1,5 @@
-import { ImageResponse } from 'workers-og';
 import type { APIContext } from 'astro';
+import { ImageResponse } from 'workers-og';
 
 // Generated on demand by the Cloudflare Worker (not prerendered).
 export const prerender = false;
@@ -22,11 +22,7 @@ async function loadFonts() {
 }
 
 function escapeHtml(value: string) {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 export async function GET({ url }: APIContext) {

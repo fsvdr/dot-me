@@ -12,7 +12,7 @@ function onlyImageChild(node) {
   const meaningful = node.children.filter((child) => !isWhitespace(child));
   if (meaningful.length !== 1) return null;
   const [child] = meaningful;
-  if (child.type === 'element' && child.tagName === 'img' && child.properties && child.properties.title) {
+  if (child.type === 'element' && child.tagName === 'img' && child.properties?.title) {
     return child;
   }
   return null;

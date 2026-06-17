@@ -18,7 +18,9 @@
     "preview": "astro build && wrangler dev -c dist/server/wrangler.json",
     "deploy": "astro build && wrangler deploy -c dist/server/wrangler.json",
     "astro": "astro",
-    "format": "prettier --write \"src/**/*.{astro,ts,js,md,css}\" \"*.{js,mjs,ts,json}\""
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "check": "biome check --write ."
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.7.0",
@@ -30,8 +32,7 @@
     "workers-og": "^0.0.27"
   },
   "devDependencies": {
-    "prettier": "^3.4.2",
-    "prettier-plugin-astro": "^0.14.1",
+    "@biomejs/biome": "^2.5.0",
     "wrangler": "^4.101.0"
   },
   "repository": {

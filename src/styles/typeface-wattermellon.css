@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Wattermellon';
-  src: url('https://pub-fd7ef24f455244ba96868abce0b6d30a.r2.dev/fonts/wattermellon/Wattermellon.otf') format('opentype'),
+  src:
+    url('https://pub-fd7ef24f455244ba96868abce0b6d30a.r2.dev/fonts/wattermellon/Wattermellon.otf') format('opentype'),
     url('https://pub-fd7ef24f455244ba96868abce0b6d30a.r2.dev/fonts/wattermellon/Wattermellon.woff') format('woff'),
     url('https://pub-fd7ef24f455244ba96868abce0b6d30a.r2.dev/fonts/wattermellon/Wattermellon.ttf') format('truetype');
   font-style: normal;

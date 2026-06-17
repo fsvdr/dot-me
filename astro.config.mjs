@@ -1,11 +1,10 @@
-import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
-import sitemap from '@astrojs/sitemap';
 import { unified } from '@astrojs/markdown-remark';
-
-import remarkReadingTime from './src/plugins/remark-reading-time.mjs';
-import remarkInlineCode from './src/plugins/remark-inline-code.mjs';
+import sitemap from '@astrojs/sitemap';
+import { defineConfig } from 'astro/config';
 import rehypeFigureCaptions from './src/plugins/rehype-figure-captions.mjs';
+import remarkInlineCode from './src/plugins/remark-inline-code.mjs';
+import remarkReadingTime from './src/plugins/remark-reading-time.mjs';
 
 // https://astro.build/config
 export default defineConfig({

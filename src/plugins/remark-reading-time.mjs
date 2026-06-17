@@ -1,5 +1,5 @@
+import { toString as mdastToString } from 'mdast-util-to-string';
 import getReadingTime from 'reading-time';
-import { toString } from 'mdast-util-to-string';
 
 /**
  * Exposes `minutesRead` (e.g. "3 min read") and `minutes` (rounded number)
@@ -7,7 +7,7 @@ import { toString } from 'mdast-util-to-string';
  */
 export default function remarkReadingTime() {
   return (tree, { data }) => {
-    const textOnPage = toString(tree);
+    const textOnPage = mdastToString(tree);
     const readingTime = getReadingTime(textOnPage);
     data.astro.frontmatter.minutesRead = readingTime.text;
     data.astro.frontmatter.minutes = Math.max(1, Math.round(readingTime.minutes));
