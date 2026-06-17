@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Title from '../components/Title.astro';
+import GhostText from '../components/GhostText.astro';
+import SiteNav from '../components/SiteNav.astro';
+
+const seo = { title: '404: Not found' };
+---
+
+<BaseLayout seo={seo}>
+  <Section>
+    <Title size="big">
+      There ain't such thing as <GhostText><span id="missing-path">this page</span></GhostText>. There could be...but no.
+    </Title>
+
+    <SiteNav showContact={false} />
+  </Section>
+</BaseLayout>
+
+<script is:inline>
+  var el = document.getElementById('missing-path');
+  if (el && location.pathname && location.pathname !== '/') el.textContent = location.pathname;
+</script>

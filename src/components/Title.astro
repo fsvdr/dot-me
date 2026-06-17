@@ -1,0 +1,14 @@
+---
+interface Props {
+  as?: string;
+  size?: 'big' | 'md' | 'xl';
+  class?: string;
+  [key: string]: any;
+}
+
+const { as: Tag = 'h1', size, class: className, ...rest } = Astro.props;
+---
+
+<Tag class:list={['title', size && `size-${size}`, className]} {...rest}>
+  <slot />
+</Tag>

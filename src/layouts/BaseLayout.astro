@@ -1,0 +1,98 @@
+---
+import Seo from '../components/Seo.astro';
+import Footer from '../components/Footer.astro';
+import SocialsNav from '../components/SocialsNav.astro';
+
+import '../styles/typeface-trenda.css';
+import '../styles/typeface-wattermellon.css';
+import '../styles/global.css';
+
+interface Props {
+  seo?: Record<string, any>;
+  lang?: string;
+}
+
+const { seo = {}, lang = 'en' } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="alternate" type="application/rss+xml" title="FSVDR's Blog RSS" href="/rss.xml" />
+
+    <Seo {...seo} />
+
+    <!-- Privacy-friendly analytics -->
+    <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="ZGTSKVXR" defer is:inline></script>
+  </head>
+
+  <body>
+    <slot />
+
+    <a href="/" aria-label="Home">
+      <abbr class="wordmark" title="Fernando Saavedra">fsvdr</abbr>
+    </a>
+
+    <Footer />
+    <SocialsNav />
+
+    <!-- FOIT strategy: swap to the custom fonts once they have loaded -->
+    <script is:inline>
+      (function () {
+        function show() {
+          document.body.classList.add('has-custom-font');
+        }
+        if (document.fonts && document.fonts.load) {
+          Promise.all([
+            document.fonts.load('400 1em Trenda'),
+            document.fonts.load('italic 400 1em Trenda'),
+            document.fonts.load('800 1em Trenda'),
+            document.fonts.load('italic 800 1em Trenda'),
+            document.fonts.load('400 1em Wattermellon'),
+          ])
+            .then(show)
+            .catch(show);
+        } else {
+          show();
+        }
+      })();
+    </script>
+  </body>
+</html>
+
+<style>
+  .wordmark {
+    position: absolute;
+    top: 1.6rem;
+    left: 1rem;
+    font-weight: var(--font-weight-black);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .wordmark {
+      position: absolute;
+      left: 0.8rem;
+      height: 100vh;
+      text-align: center;
+      writing-mode: vertical-lr;
+      padding-block-end: 0.8rem;
+      transform: rotate(180deg);
+    }
+  }
+
+  @media screen and (min-width: 1600px) {
+    .wordmark {
+      left: calc((100vw - 1600px) / 2);
+    }
+  }
+</style>
