@@ -1,0 +1,371 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Title from '../components/Title.astro';
+import CircleText from '../components/CircleText.astro';
+import { shareThumbnail } from '../consts';
+import fsvdr from '../assets/fsvdr.jpg';
+
+export async function getStaticPaths() {
+  const all = await getCollection('blog');
+  const series = all
+    .filter((p) => !p.data.standalone)
+    .sort((a, b) => (a.data.series ?? 0) - (b.data.series ?? 0));
+
+  return all.map((post) => {
+    let previous: { path: string; title: string } | null = null;
+    let next: { path: string; title: string } | null = null;
+
+    if (!post.data.standalone) {
+      const index = series.findIndex((p) => p.id === post.id);
+      if (index > 0) previous = { path: series[index - 1].data.path, title: series[index - 1].data.title };
+      if (index + 1 < series.length) next = { path: series[index + 1].data.path, title: series[index + 1].data.title };
+    }
+
+    return {
+      params: { slug: post.data.path.replace(/^\//, '') },
+      props: { post, previous, next },
+    };
+  });
+}
+
+const { post, previous, next } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(post);
+const { title, description, date, category, tags, series, standalone } = post.data;
+
+const isoDate = date.toISOString().slice(0, 10);
+const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' });
+const minutes = remarkPluginFrontmatter.minutes ?? 1;
+
+const seo = {
+  title: `${title} — FSVDR`,
+  description,
+  canonical: post.data.path,
+  image: shareThumbnail({
+    title,
+    circle: `Published ${formattedDate}`,
+    badge: series ? `No. ${series}` : undefined,
+  }),
+  imageAlt: `Reads: ${title}. Published on ${formattedDate}.${series ? ` Article number ${series}.` : ''}`,
+  og: {
+    type: 'article' as const,
+    published_time: date,
+    section: category,
+    tag: tags,
+  },
+};
+---
+
+<BaseLayout seo={seo}>
+  <article class="section article" aria-label={title}>
+    <header class="header">
+      <Title size="big" tabindex="0" autofocus>
+        {title}
+
+        <time datetime={isoDate}>
+          <CircleText radius={3} badge={series ? `No. ${series}` : ''} text={`Published ${formattedDate}`} />
+        </time>
+      </Title>
+
+      <p class="lead">{description}</p>
+    </header>
+
+    <div class="author">
+      <div class="avatar">
+        <Image src={fsvdr} alt="" width={80} height={80} aria-hidden="true" />
+      </div>
+
+      <div>
+        <address class="author-name" aria-label="Author">
+          <abbr title="Fernando Saavedra">fsvdr</abbr>
+        </address>
+        <p class="time-to-read">{`${minutes} minute${minutes > 1 ? 's' : ''} read`}</p>
+      </div>
+    </div>
+
+    <div class="body">
+      <Content />
+    </div>
+
+    <aside class="aside" aria-label="About the author">
+      <p>Hey there, my name Fernando, I'm a front end developer based in Mexico City.</p>
+
+      <div>
+        <p id="what">You can read more about me and what I do </p>
+        <a href="/" id="where">here.</a>
+      </div>
+
+      <nav aria-label="Blog pagination">
+        {
+          !standalone && previous && (
+            <a href={previous.path} rel="prev" aria-label={`Previous post: ${previous.title}`}>
+              <span>Previous one:</span>
+              {previous.title}
+            </a>
+          )
+        }
+
+        {
+          !standalone && next && (
+            <a href={next.path} rel="next" aria-label={`Next post: ${next.title}`}>
+              <span>Next up:</span>
+              {next.title}
+            </a>
+          )
+        }
+
+        {!standalone && <a href="/blog">See all posts</a>}
+      </nav>
+    </aside>
+  </article>
+</BaseLayout>
+
+<style>
+  .article {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .article {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 33%);
+      grid-template-rows: auto auto minmax(0, 1fr);
+      grid-column-gap: 4rem;
+      grid-row-gap: 1.6rem;
+      grid-template-areas:
+        'header header'
+        'body author'
+        'body aside';
+      margin-block-end: 2rem;
+    }
+  }
+
+  .header {
+    grid-area: header;
+    inline-size: 100%;
+  }
+
+  .header :global(.title) {
+    margin-block-end: 6rem;
+  }
+
+  .header time {
+    position: relative;
+    display: inline-block;
+  }
+
+  .header time :global(.circle-text) {
+    position: absolute;
+    top: -2rem;
+    left: 0.8rem;
+    font-size: 1rem;
+    -webkit-text-stroke: 0;
+  }
+
+  .header time :global(.circle-text .character:not(:last-child)) {
+    color: var(--color-accent);
+  }
+
+  .lead {
+    font-size: var(--font-size-md);
+    margin-block-end: 4rem;
+  }
+
+  /* Author block */
+  .author {
+    grid-area: author;
+    display: flex;
+    flex-flow: row nowrap;
+    inline-size: 100%;
+    margin-block-end: 2rem;
+  }
+
+  .author .avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-inline-end: 0.8rem;
+    flex: 0 0 auto;
+  }
+
+  .author .avatar :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .author .author-name {
+    font-style: normal;
+    font-weight: var(--font-weight-black);
+    text-transform: uppercase;
+    font-size: var(--font-size-sm);
+  }
+
+  .author .time-to-read {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-subtle);
+    margin-block-end: 0;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .author {
+      margin-block-end: 0;
+    }
+  }
+
+  /* Rendered markdown body */
+  .body {
+    grid-area: body;
+    margin-block-end: 4rem;
+  }
+
+  .body :global(h2) {
+    max-inline-size: 62rem;
+    font-size: var(--font-size-lg);
+    text-transform: uppercase;
+    line-height: 120%;
+    -webkit-text-stroke: 2px var(--color-white);
+    margin-block-end: 2rem;
+  }
+
+  .body :global(h2::before) {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    background-image: url('/icons/anchor.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-inline-end: 0.8rem;
+  }
+
+  .body :global(p) {
+    color: var(--color-text-subtle);
+  }
+
+  .body :global(a) {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--color-white);
+    transition: color 0.3s;
+  }
+
+  .body :global(a:hover) {
+    color: var(--color-white);
+  }
+
+  .body :global(b),
+  .body :global(strong) {
+    color: #ffffff;
+  }
+
+  .body :global(figure) {
+    margin-block: 4rem;
+  }
+
+  .body :global(figure img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .body :global(pre) {
+    padding: 1.6rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: var(--font-size-sm);
+    margin-block-end: 2.4rem;
+  }
+
+  .body :global(code) {
+    font-family: 'SF Mono', 'Fira Code', Menlo, Consolas, monospace;
+  }
+
+  .body :global(.inline-code) {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .body :global(figcaption) {
+    font-size: var(--font-size-sm);
+    text-align: right;
+    margin-block-start: 1rem;
+    max-width: 800px;
+    color: var(--color-text-subtle);
+  }
+
+  .body :global(blockquote) {
+    font-style: italic;
+    padding: 0.8rem 1.6rem;
+    border-inline-start: 4px solid var(--color-accent);
+    margin-block-end: 1.6rem;
+  }
+
+  .body :global(blockquote p) {
+    margin-block-end: 0;
+  }
+
+  .body :global(li) {
+    margin-block-end: 0.8rem;
+  }
+
+  .body :global(li::marker) {
+    color: var(--color-accent);
+  }
+
+  /* Aside */
+  .aside {
+    grid-area: aside;
+    padding-block-start: 4rem;
+    margin-block-end: 4rem;
+    border-block-start: 1px dotted var(--color-text-subtle);
+  }
+
+  .aside p {
+    display: inline;
+    color: var(--color-text-subtle);
+    margin-block-end: 0.8rem;
+  }
+
+  .aside div {
+    margin-block-start: 1.6rem;
+  }
+
+  .aside div a {
+    display: inline-block;
+    color: var(--color-white);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--color-white);
+  }
+
+  .aside nav {
+    text-transform: uppercase;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-black);
+    margin-block-start: 1.6rem;
+  }
+
+  .aside nav span {
+    color: var(--color-text-subtle);
+    margin-inline-end: 0.8rem;
+  }
+
+  .aside nav a {
+    display: block;
+    margin-block-end: 0.8rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .aside {
+      padding: 0;
+      border: 0;
+    }
+  }
+</style>

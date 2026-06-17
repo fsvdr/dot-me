@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import SectionAnchor from '../components/SectionAnchor.astro';
+import Title from '../components/Title.astro';
+import GhostText from '../components/GhostText.astro';
+import SiteNav from '../components/SiteNav.astro';
+import Contact from '../components/Contact.astro';
+import ImageReveal from '../components/ImageReveal.astro';
+import fsvdr from '../assets/fsvdr.jpg';
+---
+
+<BaseLayout>
+  <Section>
+    <div class="hero">
+      <Title size="big" class="hero-title" tabindex="0" autofocus>
+        Hey! My name is Fernando, I'm a <GhostText>front end developer</GhostText> based in Mexico City.
+      </Title>
+
+      <div class="hero-image parallax">
+        <ImageReveal
+          src={fsvdr}
+          alt="Fernando sits with his computer at a table, pretending to be cooler than he actually is"
+          loading="eager"
+        />
+      </div>
+    </div>
+
+    <p class="lead">
+      I make websites and apps
+      <span class="subtle"> that express uniqueness through design, interactivity and accessibility.</span>
+    </p>
+
+    <p class="availability">Available for freelance</p>
+
+    <SiteNav route="" />
+  </Section>
+
+  <section class="section work">
+    <Title as="h2">
+      <SectionAnchor />
+      <span>
+        Featured <br />
+        <GhostText>Work</GhostText>
+      </span>
+    </Title>
+
+    <div>
+      <article class="project" aria-labelledby="dr-saavedra">
+        <Title as="h3" size="xl">
+          <a href="https://drsaavedra.mx" target="_blank" rel="noopener noreferrer" id="dr-saavedra">
+            <GhostText>Dr. Saavedra</GhostText>
+            <br /> Landing Page & Blog
+          </a>
+        </Title>
+
+        <p>Digital branding and full stack implementation</p>
+        <small aria-label="Technology stack">
+          / gatsby / styled-components / sanity.io / mapbox / google calendar / netlify /
+        </small>
+      </article>
+
+      <article class="project" aria-labelledby="moco-comics">
+        <Title as="h3" size="xl" id="moco-comics">
+          <a href="https://moco-comics.com" target="_blank" rel="noopener noreferrer">
+            <GhostText>Moco-Comics</GhostText>
+            <br /> Blog & E-Commerce
+          </a>
+        </Title>
+
+        <p>Web design and front end implementation</p>
+        <small aria-label="Technology stack">/ javascript es6 / itcss / bem / php</small>
+      </article>
+    </div>
+  </section>
+
+  <Contact />
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    inline-size: 100%;
+  }
+
+  .hero :global(.title) {
+    position: relative;
+  }
+
+  @media screen and (min-width: 768px) {
+    .hero {
+      margin-block-end: 8rem;
+    }
+  }
+
+  .lead {
+    font-size: var(--font-size-md);
+  }
+
+  .hero-image {
+    position: absolute;
+    top: 15vh;
+    right: -8vw;
+    inline-size: max(64vw, 26rem);
+    max-inline-size: 46rem;
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  @media screen and (min-width: 1600px) {
+    .hero-image {
+      right: -2vw;
+    }
+  }
+
+  .availability {
+    position: relative;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-black);
+    padding-inline-start: 1.6rem;
+  }
+
+  .availability::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0.8em;
+    height: 0.8em;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  .work {
+    margin-block-start: 4rem;
+    counter-reset: featured-works;
+  }
+
+  .work > :global(.title) {
+    letter-spacing: 1px;
+    margin-block-end: 4rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .work {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: flex-start;
+    }
+
+    .work > :global(.title) {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      writing-mode: vertical-rl;
+      text-align: right;
+      transform: rotate(180deg);
+      margin-block-end: 0;
+    }
+
+    .work > :global(.title) :global(.section-anchor) {
+      order: 1;
+      margin-block-end: 0;
+      margin-inline-start: 1.6rem;
+    }
+
+    .work > div {
+      margin-inline-start: 4rem;
+    }
+  }
+
+  .project {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    counter-increment: featured-works;
+    margin-block-end: 4rem;
+  }
+
+  .project::before {
+    content: 'NO. ' counter(featured-works);
+    position: absolute;
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-black);
+  }
+
+  .project :global(.title) {
+    font-size: min(12vw, var(--font-size-xl));
+    margin-block-end: 0;
+  }
+
+  .project small {
+    order: -1;
+    color: var(--color-text-subtle);
+    padding-inline-start: 3.2rem;
+  }
+</style>

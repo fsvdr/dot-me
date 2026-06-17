@@ -1,99 +1,86 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# fsvdr.me
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+Personal site and portfolio for [@fsvdr](https://twitter.com/fsvdr). Built with
+[Astro](https://astro.build) and deployed to [Cloudflare Workers](https://workers.cloudflare.com).
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+## Stack
 
-## 🚀 Quick start
+- **Astro** — static output (every page is prerendered), with a single on-demand
+  Worker route for dynamic Open Graph share images.
+- **@astrojs/cloudflare** — adapter that builds the Cloudflare Worker + static assets.
+- **Content Collections** — blog posts authored in Markdown under `src/content/blog`.
+- **workers-og** (satori) — runtime generation of social share thumbnails.
+- **@astrojs/sitemap** & **@astrojs/rss** — `sitemap-index.xml` and `/rss.xml`.
+- **Shiki** — code block highlighting. **bun** — package manager / runtime.
 
-1.  **Create a Gatsby site.**
+Custom fonts (Trenda, Wattermellon) are served from Cloudflare R2 and swapped in
+with a small FOIT (Flash Of Invisible Text) strategy. Scroll parallax is done
+purely in CSS via scroll-driven animations (`animation-timeline: view()`), which
+degrade gracefully to a static layout in browsers without support (e.g. Firefox).
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+## Develop
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+```sh
+bun install
+bun run dev          # Astro dev server at http://localhost:4321
+```
 
-1.  **Start developing.**
+## Build & preview
 
-    Navigate into your new site’s directory and start it up.
+```sh
+bun run build        # outputs static assets to dist/client and the worker to dist/server
+bun run preview      # builds, then runs the worker locally with `wrangler dev`
+```
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+`bun run preview` runs the real Cloudflare Worker locally (via Wrangler/Miniflare),
+which is the most accurate way to test the dynamic OG image route. Note the OG
+endpoint fetches the brand fonts from R2 at runtime, so it needs outbound network
+access to `r2.dev`.
 
-1.  **Open the source code and start editing!**
+## Deploy
 
-    Your site is now running at `http://localhost:8000`!
+```sh
+bun run deploy       # builds and deploys with `wrangler deploy` using the generated config
+```
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+Deploys use the adapter-generated `dist/server/wrangler.json`; project-level
+settings (name, compatibility date/flags) live in `wrangler.toml`.
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+## Project layout
 
-## 🧐 What's inside?
+```
+src/
+├── assets/            # images optimized at build time via astro:assets
+├── components/        # Astro components (Title, Section, SiteNav, Contact, …)
+├── content/blog/      # Markdown blog posts (+ co-located images)
+├── content.config.ts  # blog collection schema
+├── layouts/           # BaseLayout (head, analytics, fonts, footer, socials)
+├── pages/
+│   ├── index.astro · about.astro · blog.astro · 404.astro
+│   ├── [...slug].astro        # blog post pages, routed by frontmatter `path`
+│   ├── rss.xml.ts             # RSS feed
+│   └── share-thumbnail.png.ts # on-demand OG image worker route
+├── plugins/           # remark/rehype plugins (reading time, inline code, captions)
+└── styles/            # global.css + R2 @font-face declarations
+```
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+## Writing a post
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+Add a Markdown file under `src/content/blog/<slug>/` with frontmatter:
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+```yaml
+---
+path: /my-post          # the public URL
+title: My post
+description: A short summary
+date: 2026-01-01
+category: Tutorial
+tags: ['tag-a', 'tag-b']
+series: 5                # ordering for prev/next navigation
+standalone: false        # true => excluded from the blog series + listing
+---
+```
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
-
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
-
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
-
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
-
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
-
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
-
-[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+Co-locate images next to the Markdown and reference them with relative paths;
+they are optimized automatically. An image with a title gets a `<figcaption>`:
+`![alt](./image.png 'My caption')`.

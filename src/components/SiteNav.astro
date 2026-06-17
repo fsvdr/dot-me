@@ -1,0 +1,97 @@
+---
+interface Props {
+  route?: '' | 'about' | 'blog';
+  showContact?: boolean;
+}
+
+const { route = '', showContact = true } = Astro.props;
+---
+
+<nav class="site-nav" aria-label="Site navigation">
+  <ul>
+    {
+      route !== '' && (
+        <li>
+          <a class="site-link" href="/">
+            <small>Back</small>
+            <span>Home</span>
+          </a>
+        </li>
+      )
+    }
+
+    <li>
+      <a class="site-link" href="/about">
+        <small>More</small>
+        <span>About me</span>
+      </a>
+    </li>
+
+    <li>
+      <a class="site-link" href="/blog">
+        <small>Deep writing</small>
+        <span>The Blog</span>
+      </a>
+    </li>
+
+    {
+      showContact && (
+        <li>
+          <a class="site-link internal" href="#contact">
+            <small>How to</small>
+            <span>Contact</span>
+          </a>
+        </li>
+      )
+    }
+  </ul>
+</nav>
+
+<style>
+  .site-nav {
+    width: 100%;
+    margin: 4rem 0;
+  }
+
+  .site-nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    list-style-type: none;
+  }
+
+  .site-link {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  .site-link small {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-black);
+    text-transform: uppercase;
+  }
+
+  .site-link small::after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url('/icons/external-link.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-inline-start: 0.2rem;
+  }
+
+  .site-link.internal small::after {
+    background-image: url('/icons/internal-link.svg');
+  }
+
+  .site-link span {
+    font-family: var(--font-family-display);
+    font-size: 3.157rem;
+    letter-spacing: 1px;
+    line-height: 120%;
+  }
+</style>

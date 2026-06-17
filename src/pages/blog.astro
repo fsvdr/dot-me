@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Title from '../components/Title.astro';
+import GhostText from '../components/GhostText.astro';
+import SiteNav from '../components/SiteNav.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.standalone)).sort(
+  (a, b) => (b.data.series ?? 0) - (a.data.series ?? 0)
+);
+
+const seo = { title: 'Blog — FSVDR', canonical: '/blog' };
+---
+
+<BaseLayout seo={seo}>
+  <Section>
+    <Title size="big" tabindex="0" autofocus>
+      If a post is <GhostText>published</GhostText> but no one is there to <GhostText>read</GhostText> it, does it exist?
+      <br /> Well yes.
+    </Title>
+
+    <SiteNav route="blog" showContact={false} />
+
+    <div class="posts">
+      {
+        posts.map(({ data: { path, title, series } }) => (
+          <article class="post" aria-label={`Blog post #${series}: ${title}`}>
+            <h2>
+              <a href={path} aria-label={`Blog post #${series}: ${title}`}>
+                {title}
+              </a>
+            </h2>
+
+            <span>{`No. ${series}`}</span>
+          </article>
+        ))
+      }
+    </div>
+
+    <a class="rss-link" href="/rss.xml" target="_blank" rel="noopener noreferrer">RSS Feed</a>
+  </Section>
+</BaseLayout>
+
+<style>
+  .posts {
+    width: 100%;
+    margin-block-start: 4rem;
+    margin-block-end: 4rem;
+  }
+
+  .post {
+    width: 100%;
+    font-weight: var(--font-weight-black);
+    font-size: var(--font-size-md);
+  }
+
+  .post span {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-subtle);
+    margin-inline-start: 0.8rem;
+  }
+
+  .post h2 {
+    display: inline-block;
+  }
+
+  .rss-link {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--color-white);
+    margin-block-end: 4rem;
+  }
+</style>

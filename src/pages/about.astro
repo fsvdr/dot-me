@@ -1,0 +1,283 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionAnchor from '../components/SectionAnchor.astro';
+import Title from '../components/Title.astro';
+import GhostText from '../components/GhostText.astro';
+import SiteNav from '../components/SiteNav.astro';
+import Contact from '../components/Contact.astro';
+import CircleText from '../components/CircleText.astro';
+import SpotifySong from '../components/SpotifySong.astro';
+import ImageReveal from '../components/ImageReveal.astro';
+import working from '../assets/working.jpg';
+
+const seo = { title: 'About me — FSVDR', canonical: '/about' };
+---
+
+<BaseLayout seo={seo}>
+  <section class="section hero">
+    <Title size="big" tabindex="0" autofocus>
+      You can't fit it all in a <GhostText>CV</GhostText>. So let's roll the <GhostText>about </GhostText>page.
+    </Title>
+
+    <div class="hero-image">
+      <div class="parallax">
+        <ImageReveal
+          src={working}
+          alt="Fernando sits working on his computer at a desk surrounded by trees"
+          loading="eager"
+          widths={[400, 800, 1024]}
+          sizes="(min-width: 768px) 64rem, 120vw"
+        />
+
+        <CircleText radius={3} text="No you went full instagramy here" />
+      </div>
+    </div>
+
+    <p class="lead">
+      Twenty-four year old front end developer with a<s>n obsession</s> passion for design, productivity and coffee.
+    </p>
+
+    <SiteNav route="about" />
+  </section>
+
+  <section class="section motivation">
+    <p>
+      I see technology as a means of empowerment, growing up to stories of <i>common folks</i> building world-changing
+      companies through the internet really inspired me and pushed me to peruse a career in tech.
+    </p>
+
+    <p>
+      Few years ago I graduated in software engineering and while at it, I discovered that my true drive lies in
+      optimizing the way people connect with a product — with a whole brand even.
+    </p>
+  </section>
+
+  <section class="section expertise">
+    <Title as="h2">
+      <SectionAnchor />
+      <span>
+        Technical <br />
+        <GhostText>Expertise</GhostText>
+      </span>
+    </Title>
+
+    <div>
+      <p>
+        A developer's toolkit is ever changing, right now my focus is on React, Styled Components, Node and Gatsby while
+        also keeping an eye on Svelte, Deno and SwiftUI.
+      </p>
+
+      <ul class="services">
+        <li>
+          <Title as="h3">Web <GhostText>Development</GhostText></Title>
+          <p>From promotional pages, through e-commerce all the way to full blown real time apps.</p>
+          <small>HTML, Pug, CSS, ITCSS, BEM, JavaScript, Meteor.js</small>
+        </li>
+        <li>
+          <Title as="h3">Mobile <GhostText>Development</GhostText></Title>
+          <p>Progressive web apps are the best fit more cases, hybrid apps can take care of more complex apps.</p>
+          <small>PWA, React Native, Ionic</small>
+        </li>
+        <li>
+          <Title as="h3">Digital product <GhostText>design</GhostText></Title>
+          <p>Visual identity is just the beginning of great user experiences.</p>
+          <small>Figma, Sketch, Invision, Storybook</small>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section hobbies">
+    <p class="lead">
+      In my spare time I enjoy going out for some <em>good</em> coffee and <em>tasty</em> pastries. I'm a big fan of rainy
+      days and cooking videos.
+    </p>
+
+    <div class="songs">
+      <Title as="h2">
+        <SectionAnchor />
+        <GhostText>3 songs</GhostText> <br /> playing on repeat
+      </Title>
+
+      <div>
+        <SpotifySong
+          title="Mind is a Prison by Alec Benjamin"
+          uri="https://open.spotify.com/embed/track/2hGQDYmjkwTS0J7Q2bM2sF?si=v7FWRi3CRY6CBJkwB49-iA"
+        />
+        <SpotifySong
+          title="Mind is a Prison by Alec Benjamin"
+          uri="https://open.spotify.com/embed/track/41CgzGD7xlgnJe14R4cqkL?si=HNz18UToTOSRTZWCr5IiWw"
+        />
+        <SpotifySong
+          title="Mind is a Prison by Alec Benjamin"
+          uri="https://open.spotify.com/embed/track/1ITJTMrS4cx8zdlI7DdSoo?si=-QOTvfhXTf696GVPYYiezQ"
+        />
+      </div>
+    </div>
+  </section>
+
+  <Contact />
+</BaseLayout>
+
+<style>
+  .hero {
+    margin-block-end: 2rem;
+  }
+
+  .hero-image {
+    position: relative;
+    left: 50%;
+    inline-size: min(120vw, 64rem);
+    margin-block-start: -50%;
+    margin-block-end: 8rem;
+    transform: translateX(-50%);
+    z-index: -1;
+  }
+
+  .hero-image :global(.image-reveal) {
+    opacity: 0.6;
+  }
+
+  .hero-image :global(.circle-text) {
+    position: relative;
+    margin-inline-start: auto;
+    margin-inline-end: 12%;
+    margin-block-start: -3rem;
+  }
+
+  .lead {
+    font-size: var(--font-size-md);
+  }
+
+  .motivation p {
+    opacity: 0.6;
+  }
+
+  .expertise {
+    margin: 4rem 0;
+  }
+
+  .expertise br {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .expertise {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: flex-start;
+      justify-content: space-evenly;
+    }
+
+    .expertise > :global(.title) {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      writing-mode: vertical-rl;
+      text-align: right;
+      transform: rotate(180deg);
+      margin-block-end: 0;
+    }
+
+    .expertise > :global(.title) :global(.section-anchor) {
+      order: 1;
+      margin-block-end: 0;
+      margin-inline-start: 1.6rem;
+    }
+
+    .expertise > :global(.title) br {
+      display: block;
+    }
+
+    .expertise > div {
+      margin-inline-start: 2rem;
+    }
+  }
+
+  .services {
+    inline-size: 100%;
+    list-style-type: none;
+  }
+
+  .services :global(.title) {
+    font-size: var(--font-size-lg);
+    margin-block-end: 0;
+    margin-block-start: 2rem;
+  }
+
+  .services p {
+    margin-block-end: 0;
+  }
+
+  .services small {
+    color: var(--color-text-subtle);
+  }
+
+  .hobbies {
+    margin-block-start: 8rem;
+    margin-block-end: 8rem;
+  }
+
+  .hobbies .lead {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .songs {
+    width: 100%;
+    margin-block-start: 10rem;
+  }
+
+  .songs :global(.title) {
+    margin-block-end: 0;
+  }
+
+  .songs :global(.title .ghost-text) {
+    font-size: var(--font-size-lg);
+  }
+
+  .songs > div {
+    counter-reset: top-songs;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+  }
+
+  .songs > div > :global(.spotify-song) {
+    counter-increment: top-songs;
+    position: relative;
+    margin-block-end: 4rem;
+  }
+
+  .songs > div > :global(.spotify-song)::after {
+    content: counter(top-songs);
+    position: absolute;
+    top: 25%;
+    left: -1rem;
+    font-weight: var(--font-weight-black);
+    font-size: var(--font-size-big);
+    color: transparent;
+    -webkit-text-stroke: 2px var(--color-white);
+    z-index: -1;
+    transform: translateY(-50%);
+  }
+
+  .songs > div > :global(.spotify-song:nth-child(2)) {
+    align-self: center;
+  }
+
+  .songs > div > :global(.spotify-song:nth-child(3)) {
+    align-self: flex-end;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .songs > div > :global(.spotify-song:not(:first-child)) {
+      margin-top: -30%;
+    }
+
+    .songs > div > :global(.spotify-song)::after {
+      top: 50%;
+      left: -2.6rem;
+    }
+  }
+</style>

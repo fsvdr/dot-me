@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  uri: string;
+}
+
+const { title, uri } = Astro.props;
+---
+
+<div class="spotify-song">
+  <div class="parallax">
+    <iframe
+      title={`Play ${title} on Spotify`}
+      src={uri}
+      width="300"
+      height="380"
+      frameborder="0"
+      allowtransparency="true"
+      allow="encrypted-media"
+      loading="lazy"
+      aria-label={`Play ${title} on Spotify`}></iframe>
+  </div>
+</div>
+
+<style>
+  .spotify-song {
+    width: 300px;
+    height: 30rem;
+    /* Subtle parallax travel as the embed scrolls through the viewport */
+    --parallax-from: -4%;
+    --parallax-to: 4%;
+  }
+</style>

@@ -1,0 +1,59 @@
+---
+interface Props {
+  text: string;
+  badge?: string;
+  radius?: number;
+}
+
+const { text, badge = '', radius = 2 } = Astro.props;
+const characters = [...text];
+---
+
+<small class="circle-text" style={`--radius: ${radius}rem`} aria-label={`${badge} ${text}`.trim()}>
+  {
+    characters.map((character, index) => (
+      <span class="character" style={`transform: rotate(${(360 / (characters.length + 1)) * index}deg)`} aria-hidden="true">
+        {character}
+      </span>
+    ))
+  }
+
+  {badge && <span class="badge" aria-hidden="true">{badge}</span>}
+</small>
+
+<style>
+  .circle-text {
+    --radius: 2rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: calc(var(--radius) * 2);
+    height: calc(var(--radius) * 2);
+    transform: rotate(-60deg);
+  }
+
+  .character {
+    position: absolute;
+    display: inline-block;
+    width: 1ch;
+    height: var(--radius);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-black);
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    transform-origin: bottom center;
+    transition: color 0.3s;
+  }
+
+  .circle-text:hover .character {
+    color: var(--color-accent);
+  }
+
+  .badge {
+    position: absolute;
+    align-self: center;
+    font-weight: var(--font-weight-black);
+    transform: rotate(45deg);
+  }
+</style>
