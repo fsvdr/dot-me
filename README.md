@@ -39,12 +39,35 @@ access to `r2.dev`.
 
 ## Deploy
 
+Deployment runs through **Cloudflare Workers Builds** (connected to this Git repo
+in the Cloudflare dashboard: _Workers & Pages → the worker → Settings → Builds_).
+Use these settings:
+
+| Setting             | Value                                          |
+| ------------------- | ---------------------------------------------- |
+| Build command       | `bun run build`                                |
+| Deploy command      | `npx wrangler deploy -c dist/server/wrangler.json` |
+| Build output / root | repository root                                |
+
+The non-default deploy command matters: `@astrojs/cloudflare` emits the worker
+and its resolved Wrangler config to `dist/server/wrangler.json` (with `main` and
+the `ASSETS` static-assets binding wired up), so `wrangler deploy` must be pointed
+at that file rather than the root `wrangler.toml`. The root `wrangler.toml` only
+holds project-level settings (name, compatibility date/flags) and is intentionally
+free of `main`/`assets` — adding them there would break `astro build`.
+
+Node version is pinned via `.node-version`. The deploy needs no extra Cloudflare
+resources (the only binding is the auto-managed `ASSETS`).
+
+To deploy from your own machine instead:
+
 ```sh
-bun run deploy       # builds and deploys with `wrangler deploy` using the generated config
+wrangler login
+bun run deploy       # astro build && wrangler deploy -c dist/server/wrangler.json
 ```
 
-Deploys use the adapter-generated `dist/server/wrangler.json`; project-level
-settings (name, compatibility date/flags) live in `wrangler.toml`.
+After the first deploy, point the `fsvdr.me` domain at the worker via a Custom
+Domain (or route) in the Cloudflare dashboard.
 
 ## Project layout
 
