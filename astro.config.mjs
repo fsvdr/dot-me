@@ -17,6 +17,12 @@ export default defineConfig({
   // the original site and avoid redirect hops on Cloudflare static assets.
   trailingSlash: 'never',
   build: { format: 'file' },
+  // This site doesn't use Astro sessions. Setting an in-memory driver stops the
+  // Cloudflare adapter from auto-provisioning a `SESSION` KV namespace, so the
+  // Worker deploys cleanly with no extra resources to create.
+  session: {
+    driver: 'memory',
+  },
   adapter: cloudflare({
     imageService: 'compile',
   }),
