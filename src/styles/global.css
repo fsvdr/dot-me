@@ -189,7 +189,7 @@
     -moz-osx-font-smoothing: grayscale; /* [5] */
     font-smoothing: antialiased; /* stylelint-disable-line */
     background-color: var(--color-black);
-    overflow: hidden;
+    overflow-x: clip;
   }
 
   body.has-custom-font {
@@ -238,7 +238,9 @@
     position: relative;
     inline-size: 100%;
     padding: 2.4rem calc(env(safe-area-inset-left) + 0.8rem) 0;
-    overflow: hidden;
+    /* `clip` (not `hidden`) so it doesn't become a scroll container, which
+       would break the descendant `view()` parallax timelines. */
+    overflow: clip;
   }
 
   .section .subtle {
