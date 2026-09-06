@@ -62,7 +62,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <article class="project" aria-labelledby="moco-comics">
         <Title as="h3" size="xl" id="moco-comics">
-          <a href="https://moco-comics.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://moco-comics.com" target="_blank" rel="noopener noreferrer" id="moco-comics-link">
             <GhostText>Moco-Comics</GhostText>
             <br /> Blog & E-Commerce
           </a>
@@ -76,6 +76,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <Contact />
 </BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('dr-saavedra')?.addEventListener('click', () => {
+      window.posthog?.capture('portfolio_project_opened', { project: 'dr_saavedra' });
+    });
+
+    document.getElementById('moco-comics-link')?.addEventListener('click', () => {
+      window.posthog?.capture('portfolio_project_opened', { project: 'moco_comics' });
+    });
+  });
+</script>
 
 <style>
   .hero {

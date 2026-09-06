@@ -4,15 +4,27 @@
 <div class="socials-nav">
   <nav aria-label="Social networks">
     <ul>
-      <li><a href="https://twitter.com/fsvdr">Twitter</a></li>
-      <li><a href="https://instagram.com/fsvdr.me">Instagram</a></li>
-      <li><a href="https://dribbble.com/fsvdr">Dribbble</a></li>
-      <li><a href="https://github.com/fsvdr">Github</a></li>
+      <li><a href="https://twitter.com/fsvdr" data-social-network="twitter">Twitter</a></li>
+      <li><a href="https://instagram.com/fsvdr.me" data-social-network="instagram">Instagram</a></li>
+      <li><a href="https://dribbble.com/fsvdr" data-social-network="dribbble">Dribbble</a></li>
+      <li><a href="https://github.com/fsvdr" data-social-network="github">Github</a></li>
     </ul>
   </nav>
 
   <p><span>—</span> Own it</p>
 </div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-social-network]').forEach((link) => {
+      link.addEventListener('click', () => {
+        window.posthog?.capture('social_profile_opened', {
+          social_network: link.dataset.socialNetwork,
+        });
+      });
+    });
+  });
+</script>
 
 <style>
   .socials-nav {

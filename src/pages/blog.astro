@@ -42,6 +42,14 @@ const seo = { title: 'Blog — FSVDR', canonical: '/blog' };
   </Section>
 </BaseLayout>
 
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.rss-link')?.addEventListener('click', () => {
+      window.posthog?.capture('rss_feed_opened');
+    });
+  });
+</script>
+
 <style>
   .posts {
     width: 100%;

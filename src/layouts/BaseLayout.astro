@@ -1,5 +1,6 @@
 ---
 import Footer from '../components/Footer.astro';
+import PostHog from '../components/posthog.astro';
 import Seo from '../components/Seo.astro';
 import SocialsNav from '../components/SocialsNav.astro';
 
@@ -28,6 +29,7 @@ const { seo = {}, lang = 'en' } = Astro.props;
     <link rel="alternate" type="application/rss+xml" title="FSVDR's Blog RSS" href="/rss.xml" />
 
     <Seo {...seo} />
+    <PostHog />
 
     <!-- Privacy-friendly analytics -->
     <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="ZGTSKVXR" defer is:inline></script>
